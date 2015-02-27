@@ -1829,3 +1829,9 @@ section * {
     text-align: center;
     margin-bottom: 55px;
 }
+
+#message-container{
+    position:fixed;
+    top:0;
+    z-index:1000;
+}

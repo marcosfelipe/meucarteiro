@@ -16,6 +16,8 @@ header.header-11
               a href="#"  É útil pra mim?
             li.lista
               a href="#"  Contato
-            li style=("padding-top: 30px")
-              button#login.btn.clearfix.btn-info data-original-title="" data-placement="bottom" data-toggle="popover" title=""
-                span.filter-option.pull-left Login
+            li.lista
+              - if user_signed_in?
+                = link_to 'Sair', destroy_user_session_path(), {:method => :delete}
+
+              = link_to 'Login', new_user_session_path()

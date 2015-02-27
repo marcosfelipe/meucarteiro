@@ -14,18 +14,15 @@ section.header-11-sub.bg-midnight-blue
           | resultados mais
           | satisfatórios!
         .signup-form
-          form#cadastro
+          = form_for :user, :url => user_registration_path() do |f|
             .form-group
-              input#nome.form-control placeholder="Nome" type="text" /
-              br/
-              input#email.form-control placeholder="E-mail" type="text" /
+              = f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'E-Mail'
             .form-group
-              div
-                input#senha.form-control placeholder="Senha" type="password" /
-              div
-                input#confirmSenha.form-control placeholder="Confirmação" type="password" /
+              = f.password_field :password, :class => 'form-control', :placeholder => 'Senha'
             .form-group
-              button#cadastrar.btn.btn-block.btn-info Quero testar agora!
+              = f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Confirmação'
+            div
+              = f.submit "Quero testar agora!", :class => 'btn btn-success btn-block'
       .col-sm-7.col-sm-offset-1.player-wrapper
         .player
           iframe src="http://www.youtube.com/embed/BCC7rFxo6QA"
