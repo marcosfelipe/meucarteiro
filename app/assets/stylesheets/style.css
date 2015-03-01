@@ -5,11 +5,14 @@
 
 /* styles from flat-ui-free2.0.0-fix.less files */
 body {
+    background:  #FFE957;
     color: #34495e;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.231;
 }
+
+html{ background: #000; }
 
 input,
 button,
@@ -212,7 +215,7 @@ a.text-danger:hover,
 a.text-danger:focus {
     color: #b93d30;
 }
-
+                             g
 .text-warning {
     color: #f1c40f;
 }
@@ -1835,3 +1838,5 @@ section * {
     top:0;
     z-index:1000;
 }
+
+#footer{ background: #000; padding: 20px; margin-top: 10%; }

@@ -1,0 +1,26 @@
+h1 Novo Grupo de Contatos
+
+- if @group_contacts.errors.any?
+  .alert.alert-danger.alert-dismissable
+    button.close type="button" data-dismiss="alert" aria-hidden="true"
+      | &times;
+    h4= "#{pluralize(@group_contacts.errors.count,"error")} prohibited this zone from being saved:"
+    ul
+      - @group_contacts.errors.full_messages.each do |msg|
+        li= msg
+
+
+.col-md-5
+  = form_for @group_contacts, url: '/groups', multipart: true do |f|
+
+    .form-group
+      = f.text_field :name, placeholder: "Nome do Grupo", class: "form-control", autofocus: true
+
+
+    .form-group
+      = f.label :file, "Arquivo com seus contatos"
+      = f.file_field :file, class: "form-control"
+
+
+    .form-group
+        = f.submit 'Criar grupo', :class => "btn btn-primary"

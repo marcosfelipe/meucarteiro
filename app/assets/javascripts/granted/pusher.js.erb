@@ -1,0 +1,37 @@
+$(function () {
+
+    $(document).ready(function() {
+
+        var pusher = new Pusher('4460bb457d691abdd6ae');
+        var channel = pusher.subscribe(USER_ID);
+
+        // Some useful debug msgs
+        pusher.connection.bind('connecting', function () {
+            console.log('Connecting to Pusher...');
+        });
+        pusher.connection.bind('connected', function () {
+            console.log('Connected to Pusher!');
+        });
+        pusher.connection.bind('failed', function () {
+            console.log('Connection to Pusher failed :(');
+        });
+        channel.bind('subscription_error', function (status) {
+            console.log('Pusher subscription_error');
+        });
+
+        channel.bind('import_group_done', function (data) {
+            if(data.status){
+                var status = data.status;
+                if(data.status == 'error')
+                    status = 'danger';
+
+                $('#message-container').append('<div class="alert alert-'+status+' alert-dismissable" role="alert">' +
+                        '<button class="close" data-dismiss="alert">' +
+                        '<span aria-hidden="true">&times;</span>' +
+                        '<span class="sr-only">Close</span></button>' +
+                        data.message+"</div>");
+
+            }
+        });
+    });
+});

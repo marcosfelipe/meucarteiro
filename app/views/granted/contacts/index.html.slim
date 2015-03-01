@@ -1,0 +1,39 @@
+.page-header
+  = link_to new_contact_path, :class => 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    |  New contact
+  h1
+    | Listing contacts
+
+  .table-responsive
+    table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th
+            | Name
+          th
+            | Phone
+          th
+            | Group
+          th
+          th
+          th
+      tbody
+        - @contacts.each do | contact |
+          tr
+            td
+              = contact.name
+            td
+              = contact.phone
+            td
+              ul
+                - contact.groups.map do |g|
+                  li
+                    = g.name
+
+            td
+              = link_to 'Show', '#'
+            td
+              = link_to 'Edit', '#'
+            td
+              = link_to 'Destroy', '#', method: :delete, data: { confirm: 'Are you sure?' }

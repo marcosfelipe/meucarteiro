@@ -1,0 +1,2 @@
+module Granted::ContactsHelper
+end

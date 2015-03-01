@@ -16,14 +16,18 @@ html
     = csrf_meta_tags
   body
     = render 'application/messages'
-    = render 'application/navigation'
+    = render 'application/granted/navigation'
 
     .container
       .row
         = yield
-    = render 'application/footer'
+
+    = render 'application/granted/footer'
+
+    = javascript_include_tag "http://js.pusherapp.com/2.2/pusher.min.js"
 
     javascript:
-      var USER_ID = '';
+      var USER_ID = '#{current_user.id}';
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
