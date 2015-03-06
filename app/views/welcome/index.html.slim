@@ -1,12 +1,8 @@
-section.header-11-sub.bg-midnight-blue
-  .background
-    | \&nbsp;
-  .container
-    .row
-      .col-sm-4
-        h3 style=("text-align: center;")
-          br/
-          | Aumente os seus resultados!
+.ui.grid.two.column.row
+  .two.column.centered.row
+    .column.center.aligned
+      div#signup-info
+        | Aumente os seus resultados!
         p
           | Com o
           strong MeuCarteiro.com
@@ -15,14 +11,16 @@ section.header-11-sub.bg-midnight-blue
           | satisfatórios!
         .signup-form
           = form_for :user, :url => user_registration_path() do |f|
-            .form-group
-              = f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'E-Mail'
-            .form-group
-              = f.password_field :password, :class => 'form-control', :placeholder => 'Senha'
-            .form-group
-              = f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Confirmação'
-            div
-              = f.submit "Quero testar agora!", :class => 'btn btn-success btn-block'
-      .col-sm-7.col-sm-offset-1.player-wrapper
-        .player
-          iframe src="http://www.youtube.com/embed/BCC7rFxo6QA"
+            .ui.form
+              .field
+                = f.email_field :email, :autofocus => true, :placeholder => 'E-Mail'
+              .field
+                = f.password_field :password, :placeholder => 'Senha'
+              .field
+                = f.password_field :password_confirmation, :placeholder => 'Confirmação'
+              div
+                = f.submit "Quero testar agora!", :class => 'ui green button'
+
+    .column.player-wrapper
+      .player
+        iframe src="http://www.youtube.com/embed/BCC7rFxo6QA"

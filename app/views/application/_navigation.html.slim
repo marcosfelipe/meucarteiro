@@ -1,23 +1,17 @@
-header.header-11
-  .container
-    .row
-      .navbar.col-sm-12 role="navigation"
-        .navbar-header
-          button.navbar-toggle type="button"
-          a.brand href="http://meucarteiro.com"
-            = image_tag('logo.png')
-        .collapse.navbar-collapse.pull-right
-          ul.nav.pull-left
-            li.active.lista
-              a href="#"  Início
-            li.lista
-              a href="#"  Como Funciona?
-            li.lista
-              a href="#"  É útil pra mim?
-            li.lista
-              a href="#"  Contato
-            li.lista
-              - if user_signed_in?
-                = link_to 'Sair', destroy_user_session_path(), {:method => :delete}
+.ui.grid
+  .two.column.row
+    .column.center.aligned
+      a.brand href="http://meucarteiro.com"
+        = image_tag('logo.png')
 
-              = link_to 'Login', new_user_session_path()
+    .column.left.aligned
+      .ui.text.menu
+        a.item Inicio
+        a.item Como Funciona?
+        a.item É útil pra mim?
+        a.item Contato
+        - if user_signed_in?
+          = link_to 'Sair', destroy_user_session_path(), {:method => :delete, class: 'item'}
+        -else
+          = link_to 'Login', new_user_session_path(), {class: 'item'}
+

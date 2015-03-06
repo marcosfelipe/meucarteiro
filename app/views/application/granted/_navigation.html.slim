@@ -1,14 +1,12 @@
-header.header-11
-  .container
-    .row
-      .navbar.col-sm-12 role="navigation"
-        .navbar-header
-          button.navbar-toggle type="button"
-        .collapse.navbar-collapse
-          ul.nav.pull-left
-            li.lista
-              a href="#"  Menu1
-            li.lista
-              = link_to 'Sair', destroy_user_session_path(), {:method => :delete}
+.ui.fixed.inverted.main.menu.blue
+  a.item
+    i.mail.icon
+    | #menu1
+  a.item
+    i.star.icon
+    | #menu2
+  a.item data-method="delete" href="#{url_for controller: "devise/sessions", action: :destroy}"
+    i.remove.icon
+    | Sair
 
 

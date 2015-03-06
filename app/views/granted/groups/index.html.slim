@@ -1,30 +1,22 @@
 .page-header
-  = link_to new_group_path, :class => 'btn btn-primary' do
+  = link_to new_group_path, :class => 'ui button green' do
     span.glyphicon.glyphicon-plus
     |  New Group
   h1
     | Listing groups
 
-  .table-responsive
-    table
-      thead
-        tr
-          th.col-md-5
-            | Name
-          th
-      tbody
-        - @groups.each do | group |
-          tr class=("warning" if group.importing?)
-            td.col-md-5
-              h4
-                = group.name
-            td
-              = link_to 'Ver contatos', group_contacts_path(group.id), class: 'btn btn-primary'
-              '
-              = link_to 'Mesclar', '#', class: 'btn btn-primary'
-              '
-              = link_to 'Copiar', '#', class: 'btn btn-primary'
-              '
-              = link_to 'Excluir', '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
-              '
-              = content_tag 'span', "Importando contatos...", class: "label label-warning" if group.importing?
+- @groups.each do | group |
+  .ui.floated.segment  class=("warning" if group.importing?)
+    h4.ui.top.attached.header.blue
+      = group.name
+      = content_tag 'span', "Importando contatos...", class: "ui label" if group.importing?
+    .ui.attached.buttons
+      = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button'
+      '
+      = link_to content_tag('i',nil,{class: 'icon linkify'}), '#', class: 'ui button'
+      '
+      = link_to content_tag('i',nil,{class: 'icon copy'}), '#', class: 'ui button'
+      '
+      = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button'
+
+
