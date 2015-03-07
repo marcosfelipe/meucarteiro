@@ -1,9 +1,5 @@
-#message-container.col-md-offset-5
+#message-container
   - flash.each do |name, msg|
-    = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do
-      button.close type="button" data-dismiss="alert"
-        span aria-hidden="true"
-          | &times;
-        span.sr-only
-          | Close
+    = content_tag :div, :class => "ui message #{ name == :error ? "red" : "green" } segment vertical inverted" do
+      i.icon.close
       = msg

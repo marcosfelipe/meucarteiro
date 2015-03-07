@@ -1,26 +1,25 @@
-h1 Novo Grupo de Contatos
+.ui.two.column.centered.grid
 
-- if @group_contacts.errors.any?
-  .alert.alert-danger.alert-dismissable
-    button.close type="button" data-dismiss="alert" aria-hidden="true"
-      | &times;
-    h4= "#{pluralize(@group_contacts.errors.count,"error")} prohibited this zone from being saved:"
-    ul
-      - @group_contacts.errors.full_messages.each do |msg|
-        li= msg
+  .column
 
+    h1.ui.header Novo Grupo de Contatos
 
-.col-md-5
-  = form_for @group_contacts, url: '/groups', multipart: true do |f|
+    - if @group_contacts.errors.any?
+      .ui.message.red.segment.inverted
+        i.close.icon
+        h4= "#{pluralize(@group_contacts.errors.count,"error")} prohibited this zone from being saved:"
+        ul
+          - @group_contacts.errors.full_messages.each do |msg|
+            li= msg
 
-    .form-group
-      = f.text_field :name, placeholder: "Nome do Grupo", class: "form-control", autofocus: true
-
-
-    .form-group
-      = f.label :file, "Arquivo com seus contatos"
-      = f.file_field :file, class: "form-control"
-
-
-    .form-group
-        = f.submit 'Criar grupo', :class => "btn btn-primary"
+    = form_for @group_contacts, url: '/groups', multipart: true do |f|
+      .ui.form.large
+        .field
+          = f.text_field :name, placeholder: "Nome do Grupo", autofocus: true
+        .field
+          = f.label :file, "Selecione um arquivo com seus contatos"
+          = f.file_field :file
+        .field
+          = f.button :class => "ui button green large" do
+            i.icon.checkmark
+            | Criar grupo
