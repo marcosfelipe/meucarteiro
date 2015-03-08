@@ -13,7 +13,9 @@ $(document).ready(function () {
     ;
 
 
-    $('.message .close').on('click', function() {
+    $('.ui.toggle.button').state();
+
+    $('body').on('click','.message .close', function() {
         $(this).closest('.message').fadeOut();
     });
 

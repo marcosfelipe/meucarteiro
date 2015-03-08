@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: "auth"
 
+  #escopo para pasta de usuário autenticado
   scope module: 'granted' do
     resources :contacts
 
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
     resources :groups do
       resources :contacts
     end
+
+    #duplicar grupo
+    post 'group/duplicate', controller: :groups, action: :duplicate
 
   end
 

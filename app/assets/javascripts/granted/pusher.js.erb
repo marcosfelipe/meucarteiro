@@ -23,12 +23,12 @@ $(function () {
             if(data.status){
                 var status = data.status;
                 if(data.status == 'error')
-                    status = 'danger';
+                    status = 'red';
+                else if(data.status == 'success')
+                    status = 'green';
 
-                $('#message-container').append('<div class="alert alert-'+status+' alert-dismissable" role="alert">' +
-                        '<button class="close" data-dismiss="alert">' +
-                        '<span aria-hidden="true">&times;</span>' +
-                        '<span class="sr-only">Close</span></button>' +
+                $('#message-container').append('<div class="ui message '+status+' segment vertical inverted">' +
+                        '<i class="close icon"></i>' +
                         data.message+"</div>");
 
             }

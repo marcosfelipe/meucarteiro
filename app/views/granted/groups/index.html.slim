@@ -1,35 +1,69 @@
 h1.ui.header
   | Listing groups
 
-table.table.ui.inverted.yellow.large
-  thead
-    tr
-      th
-        | Nome
-      th
-  tbody
-    - @groups.each do | group |
+- if @groups.size > 0
+  table.table.ui.inverted.yellow.large
+    thead
       tr
-        td
-          = group.name
-          - if group.importing?
-            = content_tag 'span', class: "ui label teal mini" do
-              i.icon.warning
-              | Importando contatos...
+        th
+          | Nome
+        th
+    tbody
+      - @groups.each do | group |
+        tr
+          td.group-name
+            = group.name
+            - if group.importing?
+              = content_tag 'span', class: "ui label teal mini" do
+                i.icon.warning
+                | Importando contatos...
+          td
+            .ui.attached.buttons.right.floated.large
+              = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'
+              '
+              .ui.button.blue.duplicate-group title='Duplicar grupo' data-id="#{group.id}"
+                i.icon.copy
+              '
+              = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
 
-        td
-          .ui.attached.buttons.right.floated.large
-            = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue'
-            '
-            = link_to content_tag('i',nil,{class: 'icon linkify'}), '#', class: 'ui button blue'
-            '
-            = link_to content_tag('i',nil,{class: 'icon copy'}), '#', class: 'ui button blue'
-            '
-            = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
+  br
 
-br
+  .ui.buttons.pull.right
+    = link_to '/adlf', class: 'ui button green large' do
+      i.icon.linkify
+      | Mesclar Grupos
+    = link_to new_group_path, class: 'ui button green large' do
+      i.icon.add
+      |  New Group
 
-= link_to new_group_path, class: 'ui button green right floated large' do
-  i.icon.add
-  |  New Group
+  #modal-duplicate-group.ui.modal
+    i.close.icon
+    .header
+      | Duplicar Grupo
+    .content
+      .ui.header
+        | Todos os contatos serão copiados!
+      p
+        | Deseja realmente duplicar o grupo
+        '
+        b
+          span#duplicate-group-name
+        | ?
+      = form_for 'group', url: group_duplicate_path do |f|
+        .ui.form
+          .field
+            = f.text_field 'name', placeholder: 'Nome do novo grupo'
+          = f.hidden_field 'id', id: 'id'
+          = f.submit 'Ok! Duplicar', class: 'ui button green'
+
+    .actions
+      .ui.button.red
+        i.close.icon
+        | Cancelar
+
+- else
+  .ui.teal.label.huge
+    | Você não tem nenhum grupo de contatos!
+    .detail
+      = link_to 'Clique aqui criar um grupo.', new_group_path
 
