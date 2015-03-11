@@ -2,9 +2,13 @@
   .two.column.centered.row
     .column.center.aligned
       div#signup-info
-        = t(".title")
+        | Aumente os seus resultados!
         p
-          = t(".text_html")
+          | Com o
+          strong MeuCarteiro.com
+          | você alcança seus clientes de forma mais pessoal obtendo
+          | resultados mais
+          | satisfatórios!
         .signup-form
           = form_for :user, :url => user_registration_path() do |f|
             .ui.form
@@ -19,7 +23,5 @@
 
     .column.player-wrapper
       .player
-        iframe src="http://www.youtube.com/embed/VOwU36KqTjE"
-
-
+        iframe src="http://www.youtube.com/embed/BCC7rFxo6QA"
 
