@@ -1,4 +1,4 @@
-class Validations::GroupImportContacts
+class GroupImportContacts
 
   include ActiveModel::Model
 

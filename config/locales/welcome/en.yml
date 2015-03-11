@@ -19,6 +19,10 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-pt:
-  hello: "Olá Mundo!"
+en:
+  welcome:
+    index:
+      title: "kljlkjlkjkl"
+      text_html: klkj <b>MeuCarteiro.com</b> kjlkjkjlkjkljkl rkjlkj!
+
 

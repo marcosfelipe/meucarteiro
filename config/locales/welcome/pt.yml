@@ -20,5 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pt:
-  hello: "Olá Mundo!"
+  welcome:
+    index:
+      title: Aumente os seus resultados!
+      text_html: Com o <b>MeuCarteiro.com</b> você alcança seus clientes de forma mais pessoal obtendo resultados mais satisfatórios!
+
 
