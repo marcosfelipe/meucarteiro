@@ -33,7 +33,10 @@ class Granted::GroupsController < GrantedController
 
     if group.valid?
       group = Group.find(params[:id])
-      group.duplicate params
+      new_group = group.duplicate params
+
+      DuplicateGroupContactsJob.perform_later new_group, group
+
       notice = 'Seu grupo de contatos estará disponível em instantes!'
     else
       notice = 'Grupo invalido!'

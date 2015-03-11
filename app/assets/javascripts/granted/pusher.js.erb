@@ -20,18 +20,17 @@ $(function () {
         });
 
         channel.bind('import_group_done', function (data) {
-            if(data.status){
-                var status = data.status;
-                if(data.status == 'error')
-                    status = 'red';
-                else if(data.status == 'success')
-                    status = 'green';
-
-                $('#message-container').append('<div class="ui message '+status+' segment vertical inverted">' +
-                        '<i class="close icon"></i>' +
-                        data.message+"</div>");
-
+            if(data.status && data.message){
+                set_message(data.status, data.message)
             }
         });
+
+        channel.bind('duplicate_group_done', function (data) {
+            if(data.status && data.message){
+                set_message(status, data.message)
+            }
+        });
+
+
     });
 });
