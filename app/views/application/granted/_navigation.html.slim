@@ -1,12 +1,18 @@
 #navigation-container.ui.inverted.main.menu.blue
   a.item
-    i.mail.icon
-    | #menu1
-  a.item
-    i.star.icon
-    | #menu2
-  a.item.floated.right data-method="delete" href="#{url_for controller: "devise/sessions", action: :destroy}"
-    i.remove.icon
-    | Sair
+    i.dashboard.icon
+    | Dashboard
+
+  = link_to groups_path, class: 'item' do
+    i.block.layout.icon
+    | Groups
+
+  .ui.dropdown.item.floated.right
+    | #{current_user.email}
+    i.dropdown.icon
+    .menu
+      a.item data-method="delete" href="#{url_for controller: "devise/sessions", action: :destroy}"
+        i.remove.icon
+        | Sair
 
 

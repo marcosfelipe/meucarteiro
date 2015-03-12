@@ -1,7 +1,7 @@
 class Granted::GroupsController < GrantedController
 
   def index
-    @groups = Group.where user_id: current_user
+    @groups = Group.where(user_id: current_user).order(:created_at).page(params[:page])
   end
 
   def new

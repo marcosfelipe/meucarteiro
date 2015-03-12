@@ -28,7 +28,9 @@ h1.ui.header
 
   br
 
-  .ui.buttons.pull.right
+  = paginate @groups
+
+  .ui.pull.right
     = link_to '/adlf', class: 'ui button green large' do
       i.icon.linkify
       | Mesclar Grupos

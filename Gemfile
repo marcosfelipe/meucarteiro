@@ -40,6 +40,9 @@ gem 'autoprefixer-rails'
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 
+#para paginação
+gem 'kaminari'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

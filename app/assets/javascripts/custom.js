@@ -21,7 +21,7 @@ $(document).ready(function () {
         .checkbox()
     ;
 
-    $('select.dropdown')
+    $('select.dropdown, .ui.dropdown')
         .dropdown()
     ;
 
