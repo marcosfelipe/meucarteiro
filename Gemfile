@@ -10,6 +10,7 @@ end
 
 group :production do
   gem 'mysql2', '~> 0.3.0'
+  gem 'yui-compressor'
 end
 
 
