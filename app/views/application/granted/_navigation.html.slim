@@ -1,7 +1,11 @@
-#navigation-container.ui.inverted.main.menu.blue
+#navigation-container.ui.inverted.main.menu.yellow
   a.item
     i.dashboard.icon
     | Dashboard
+
+  = link_to contacts_path, class: 'item' do
+    i.users.icon
+    | Contacts
 
   = link_to groups_path, class: 'item' do
     i.block.layout.icon

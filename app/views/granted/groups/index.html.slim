@@ -13,10 +13,6 @@ h1.ui.header
         tr
           td.group-name
             = group.name
-            - if group.importing?
-              = content_tag 'span', class: "ui label teal mini" do
-                i.icon.warning
-                | Importando contatos...
           td
             .ui.attached.buttons.right.floated.large
               = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'

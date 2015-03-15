@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     post 'pusher/auth'
 
     resources :groups do
-      resources :contacts
+      resources :contacts, only:[:create, :index, :new]
     end
 
     #duplicar grupo

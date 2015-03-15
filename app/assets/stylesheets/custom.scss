@@ -1,30 +1,28 @@
-body{
+body {
   background: #FFE957;
 }
 
-footer#footer{
-
+footer#footer {
   border-top: solid 1px #666666;
   margin-top: 50px;
   padding: 25px;
-
   color: #666666;
   text-align: center;
+  background: #000;
 }
 
-
-#view-container{
+#view-container {
   padding: 60px;
 }
 
-#message-container > .message{
-  margin:0px;
+#message-container > .message {
+  margin: 0px;
 }
 
-#navigation-container{
-  margin:0;
+#navigation-container {
+  margin: 0;
 }
 
-.pull.right{
+.pull.right {
   float: right;
 }

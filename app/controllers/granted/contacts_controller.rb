@@ -1,8 +1,12 @@
 class Granted::ContactsController < GrantedController
 
   def index
-
-    @contacts = Contact.joins(:groups).where({'groups.id' => params[:group_id]})
+    if params[:group_id]
+      @group = Group.find params[:group_id]
+      @contacts = current_user.groups.find(@group).contacts.all.order('contacts.created_at desc').page(params[:page]).per(15)
+    else
+      @contacts = current_user.contacts.joins(:groups).search(params[:search]).order('contacts.created_at desc').page(params[:page]).per(15)
+    end
   end
 
   def new

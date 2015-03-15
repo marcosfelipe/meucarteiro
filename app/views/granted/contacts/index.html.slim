@@ -1,39 +1,64 @@
-.page-header
-  = link_to new_contact_path, :class => 'btn btn-primary' do
-    span.glyphicon.glyphicon-plus
-    |  New contact
-  h1
-    | Listing contacts
+h1.ui.header
+  | Listing contacts
 
-  .table-responsive
-    table.table.table-striped.table-bordered.table-hover
-      thead
+.ui.form
+  = form_tag contacts_path, method: :get do
+    .fields
+      .six.wide.field
+        = text_field_tag :search, params[:search], placeholder: "Search..."
+      .two.wide.field
+        button.ui.button.green type="submit"
+          i.icon.search
+
+- if @contacts.size > 0
+
+  table.table.ui.inverted.yellow
+    thead
+      tr
+        th
+          | Name
+        th
+          | Phone
+        th
+          | E-Mail
+        th
+          | Group
+        th
+        th
+        th
+    tbody
+      - @contacts.each do | contact |
         tr
-          th
-            | Name
-          th
-            | Phone
-          th
-            | Group
-          th
-          th
-          th
-      tbody
-        - @contacts.each do | contact |
-          tr
-            td
-              = contact.name
-            td
-              = contact.phone
-            td
-              ul
-                - contact.groups.map do |g|
-                  li
-                    = g.name
+          td
+            = contact.name
+          td
+            = contact.phone
+          td
+            = contact.email
+          td
+            - contact.groups.map do |g|
+              a.ui.teal.tag.label.mini
+                = g.name
 
-            td
-              = link_to 'Show', '#'
-            td
-              = link_to 'Edit', '#'
-            td
-              = link_to 'Destroy', '#', method: :delete, data: { confirm: 'Are you sure?' }
+          td
+            = link_to 'Show', '#'
+          td
+            = link_to 'Edit', '#'
+          td
+            = link_to 'Destroy', '#', method: :delete, data: { confirm: 'Are you sure?' }
+
+  br
+
+  = paginate @contacts
+
+  .ui.pull.right
+    = link_to new_contact_path, class: 'ui button green large' do
+      i.icon.add
+      |  New Contact
+
+-else
+
+  .ui.teal.label.huge
+    | Você não tem nenhum contato!
+    .detail
+      = link_to 'Nenhum contato encontrado!', new_contact_path
