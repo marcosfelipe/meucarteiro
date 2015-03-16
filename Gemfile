@@ -6,6 +6,7 @@ gem 'rails', '4.2.0'
 
 group :development do
   gem 'sqlite3'
+  gem 'rails-dev-tweaks'
 end
 
 group :production do
@@ -43,6 +44,9 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 
 #para paginação
 gem 'kaminari'
+
+#chosen para selects multiplos
+gem 'chosen-rails'
 
 
 # Use jquery as the JavaScript library

@@ -1,6 +1,16 @@
 h1.ui.header
   | Listing groups
 
+.ui.form
+  = form_tag groups_path, method: :get do
+    .fields
+      .six.wide.field
+        = text_field_tag :search, params[:search], placeholder: "Search..."
+      .two.wide.field
+        button.ui.button.green type="submit"
+          i.icon.search
+
+
 - if @groups.size > 0
   table.table.ui.inverted.yellow.large
     thead
@@ -61,7 +71,7 @@ h1.ui.header
 
 - else
   .ui.teal.label.huge
-    | Você não tem nenhum grupo de contatos!
+    | Nenhum grupo encontrado!
     .detail
       = link_to 'Clique aqui criar um grupo.', new_group_path
 

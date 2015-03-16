@@ -1,0 +1,24 @@
+.ui.form
+  = form_for @contact, url: contact_path do |f|
+    .three.fields
+      .field
+        label Name
+        = f.text_field :name, title: "Name", placeholder: "Name"
+      .field
+        label Phone
+        = f.text_field :phone, title: "Phone", placeholder: "Phone"
+      .field
+        label E-Mail
+        = f.text_field :email, title: "E-Mail", placeholder: "E-Mail"
+    .two.fields
+      .field
+        label Data de Nascimento
+        = f.date_select :birth, title: "Birth", placeholder: "Birth"
+      .field
+        label City
+        = f.text_field :city, title: "City", placeholder: "City"
+    .field
+      label Grupos
+      = f.select :group_ids, current_user.groups.all.collect{|g| [g.name, g.id]}, {}, { prompt: 'Selecione os grupos', multiple:true, class: 'chosen-select', include_blank: true}
+    .field
+      = f.submit "Ok", class: "ui button green"

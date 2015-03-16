@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   #escopo para pasta de usuário autenticado
   scope module: 'granted' do
-    resources :contacts
+
+    resources :contacts, except: [:show]
 
     post 'pusher/auth'
 
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
 
     #duplicar grupo
     post 'group/duplicate', controller: :groups, action: :duplicate
+
+    get 'dashboard', controller: :dashboard, action: :index
 
   end
 

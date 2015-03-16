@@ -1,0 +1,40 @@
+$(document).ready(function(){
+
+
+    $('.edit-contact').click(function() {
+
+        var id = $(this).attr('data-id');
+
+        $.ajax({
+            url: '/contacts/' + id + '/edit',
+            type: 'get'
+        }).success(function(data){
+            var modal = $('#modal-edit-contact');
+            modal.find('#form').html(data);
+            modal.find('#form').submit(function(e){
+                e.preventDefault();
+            });
+            modal.modal('show');
+            init_chosen();
+        })
+
+    });
+
+    $('#modal-edit-contact').on('click', 'input[type=submit]', function(){
+        var form = $(this).closest('form');
+        var url = form.attr('action');
+        var data = form.serialize();
+        var method = form.find('input[name=_method]').val();
+        $.ajax({
+            url: url,
+            data: data,
+            type: method
+        }).success(function(data){
+            $('#modal-edit-contact').find('#form').hide().html(data).fadeIn(300);
+            init_chosen();
+        });
+    })
+
+
+
+});

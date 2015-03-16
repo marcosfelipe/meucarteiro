@@ -2,7 +2,7 @@ h1.ui.header
   | Listing contacts
 
 .ui.form
-  = form_tag contacts_path, method: :get do
+  = form_tag current_page?(contacts_path) ? contacts_path : group_contacts_path, method: :get do
     .fields
       .six.wide.field
         = text_field_tag :search, params[:search], placeholder: "Search..."
@@ -12,7 +12,7 @@ h1.ui.header
 
 - if @contacts.size > 0
 
-  table.table.ui.inverted.yellow
+  table.table.ui.inverted.yellow.compact
     thead
       tr
         th
@@ -23,8 +23,6 @@ h1.ui.header
           | E-Mail
         th
           | Group
-        th
-        th
         th
     tbody
       - @contacts.each do | contact |
@@ -39,13 +37,24 @@ h1.ui.header
             - contact.groups.map do |g|
               a.ui.teal.tag.label.mini
                 = g.name
+          td
+            .buttons.ui.pull.right
+              .edit-contact.button.ui.blue data-id="#{contact.id}"
+                i.icon.edit
+              = link_to '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
+                i.icon.delete
 
-          td
-            = link_to 'Show', '#'
-          td
-            = link_to 'Edit', '#'
-          td
-            = link_to 'Destroy', '#', method: :delete, data: { confirm: 'Are you sure?' }
+  #modal-edit-contact.ui.modal
+    i.close.icon
+    .header
+      | Editar Contato
+    .content
+      .ui.header
+      #form
+    .actions
+      .ui.button.red
+        i.close.icon
+        | Cancelar
 
   br
 

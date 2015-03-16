@@ -1,13 +1,13 @@
 #navigation-container.ui.inverted.main.menu.yellow
-  a.item
+  = link_to dashboard_path, class: "item #{'active' if current_page?(dashboard_path)}" do
     i.dashboard.icon
     | Dashboard
 
-  = link_to contacts_path, class: 'item' do
+  = link_to contacts_path, class: "item #{'active' if current_page?(contacts_path)}" do
     i.users.icon
     | Contacts
 
-  = link_to groups_path, class: 'item' do
+  = link_to groups_path, class: "item #{'active' if current_page?(groups_path)}" do
     i.block.layout.icon
     | Groups
 
