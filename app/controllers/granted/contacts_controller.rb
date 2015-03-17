@@ -3,9 +3,15 @@ class Granted::ContactsController < GrantedController
   def index
     if params[:group_id]
       @group = Group.find params[:group_id]
-      @contacts = current_user.groups.find(@group).contacts.all.search(params[:search]).order('contacts.created_at desc').page(params[:page]).per(15)
+      @contacts = current_user.groups.find(@group).contacts.all
+        .search(params[:search]).order('contacts.created_at desc')
+        .activated
+        .page(params[:page]).per(15)
     else
-      @contacts = current_user.contacts.includes(:groups).search(params[:search]).order('contacts.created_at desc').page(params[:page]).per(15)
+      @contacts = current_user.contacts.includes(:groups)
+        .search(params[:search]).order('contacts.created_at desc')
+        .activated
+        .page(params[:page]).per(15)
     end
   end
 
@@ -22,7 +28,7 @@ class Granted::ContactsController < GrantedController
   end
 
   def edit
-    @contact = Contact.find params[:id]
+    @contact = current_user.contacts.find params[:id]
 
     respond_to do |format|
       format.html { render layout: false }
@@ -31,6 +37,12 @@ class Granted::ContactsController < GrantedController
 
   def create
 
+  end
+
+  def destroy
+    @contact = current_user.contacts.find params[:id]
+    @contact.disabled!
+    redirect_to :back, notice: 'Contato deletado!'
   end
 
 

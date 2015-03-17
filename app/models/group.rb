@@ -8,13 +8,10 @@ class Group < ActiveRecord::Base
 
 
   def duplicate(params)
-
     group = self.dup
     group.name = params[:name] || group.name
     group.save
-
     group
-
   end
 
   def self.search(search)

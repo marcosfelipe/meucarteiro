@@ -41,7 +41,7 @@ h1.ui.header
             .buttons.ui.pull.right
               .edit-contact.button.ui.blue data-id="#{contact.id}"
                 i.icon.edit
-              = link_to '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
+              = link_to contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
                 i.icon.delete
 
   #modal-edit-contact.ui.modal

@@ -1,5 +1,7 @@
 class Contact < ActiveRecord::Base
 
+  enum active: { disabled:0, enabled:1 }
+
   belongs_to :user
   has_many :group_contacts
   has_many :groups, through: :group_contacts
@@ -23,5 +25,7 @@ class Contact < ActiveRecord::Base
       all
     end
   end
+
+  scope :activated, -> { where active: 1 }
 
 end

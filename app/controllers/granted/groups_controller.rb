@@ -14,9 +14,10 @@ class Granted::GroupsController < GrantedController
 
     if @group_contacts.valid?
 
-      group = Group.create!(name: group_import_contacts_params[:name], user_id: current_user.id)
+      group = current_user.groups.create! name: group_import_contacts_params[:name]
 
-      GroupContact.import(group, group_import_contacts_params[:file])
+      #coloca na queue a importação de contatos
+      CsvImportJob.perform_later(group, group_import_contacts_params[:file].path)
 
       redirect_to groups_path, notice: 'Seu grupo de contatos estará disponível em instantes!'
     else
@@ -27,32 +28,17 @@ class Granted::GroupsController < GrantedController
   end
 
   def duplicate
-    params = group_duplicate_params
-
-    group = GroupDuplicate.new(params)
-
-    if group.valid?
-      group = Group.find(params[:id])
-      new_group = group.duplicate params
-
-      DuplicateGroupContactsJob.perform_later new_group, group
-
-      notice = 'Seu grupo de contatos estará disponível em instantes!'
-    else
-      notice = 'Grupo invalido!'
-      group.errors.full_messages.each do |error|
-        notice += error.to_s
-      end
-    end
-    redirect_to groups_path, notice: notice
-
+    group = current_user.groups.find group_duplicate_params[:id]
+    new_group = group.duplicate group_duplicate_params
+    DuplicateGroupContactsJob.perform_later new_group, group
+    redirect_to groups_path, notice: 'Seu grupo de contatos estará disponível em instantes!'
   end
 
 
   private
 
   def group_duplicate_params
-    params.require(:group).permit(:id, :name).merge({current_user: current_user})
+    params.require(:group).permit(:id, :name)
   end
 
   def group_import_contacts_params
