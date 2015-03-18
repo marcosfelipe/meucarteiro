@@ -1,0 +1,71 @@
+h1.ui.header
+  = t('.title')
+
+.ui.form
+  = form_tag imports_path, method: :get do
+    .fields
+      .six.wide.field
+        = text_field_tag :search, params[:search], placeholder: 'Buscar...'
+      .two.wide.field
+        button.ui.button.green type="submit"
+          i.icon.search
+
+
+- if @imports.size > 0
+  table.table.ui.inverted.yellow.large
+    thead
+      tr
+        th
+          = t('.index.table.col.name')
+        th
+    tbody
+      - @imports.each do | import |
+        tr
+          td
+            = import.name
+          td
+            = link_to content_tag('i',nil,{class: 'icon remove'}), contacts_path(import), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
+
+  br
+
+  = paginate @groups
+
+  .ui.pull.right
+    = link_to '/adlf', class: 'ui button green large' do
+      i.icon.linkify
+      | Mesclar Grupos
+    = link_to new_import_path, class: 'ui button green large' do
+      i.icon.add
+      |  New Group
+
+  #modal-duplicate-group.ui.modal
+    i.close.icon
+    .header
+      | Duplicar Grupo
+    .content
+      .ui.header
+        | Todos os contatos serão copiados!
+      p
+        | Deseja realmente duplicar o grupo
+        '
+        b
+          span#duplicate-group-name
+        | ?
+      = form_for 'group', url: group_duplicate_path do |f|
+        .ui.form
+          .field
+            = f.text_field 'name', placeholder: 'Nome do novo grupo'
+          = f.hidden_field 'id', id: 'id'
+          = f.submit 'Ok! Duplicar', class: 'ui button green'
+
+    .actions
+      .ui.button.red
+        i.close.icon
+        | Cancelar
+
+- else
+  .ui.teal.label.huge
+    | Nenhum grupo encontrado!
+    .detail
+      = link_to 'Clique aqui criar um grupo.', new_group_path
+

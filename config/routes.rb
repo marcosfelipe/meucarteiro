@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #escopo para pasta de usuário autenticado
   scope module: 'granted' do
 
+    resources :imports
     resources :contacts, except: [:show]
 
     post 'pusher/auth'
