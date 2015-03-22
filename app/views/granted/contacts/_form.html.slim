@@ -13,7 +13,8 @@
     .two.fields
       .field.date.selects
         label Data de Nascimento
-        = f.date_select :birth, title: "Birth", placeholder: "Birth"
+        = f.text_field :birth, { :title => "Birth", :placeholder =>  "Birth", :class => 'datepicker', :id => Random.rand,
+            "data-options" => '{"changeMonth": true,"changeYear": true, "dateFormat": "yy-mm-dd", "yearRange": "1940:2008"}' }
       .field
         label City
         = f.text_field :city, title: "City", placeholder: "City"

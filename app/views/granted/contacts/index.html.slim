@@ -2,8 +2,8 @@
 
 .page.container
 
-  h1.ui.header
-    | Listing contacts
+  h1.ui.header.dividing
+    | Meus Contatos
 
   .ui.form
     = form_tag current_page?(contacts_path) ? contacts_path : group_contacts_path, method: :get do
@@ -42,11 +42,10 @@
                 a.ui.teal.tag.label.mini
                   = g.name
             td
-              .buttons.ui.pull.right
-                .edit-contact.button.ui.blue data-id="#{contact.id}"
-                  i.icon.edit
-                = link_to contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
-                  i.icon.delete
+              .edit-contact.button.ui.blue data-id="#{contact.id}"
+                i.icon.edit
+              = link_to contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
+                i.icon.delete
 
     #modal-edit-contact.ui.modal
       i.close.icon

@@ -38,9 +38,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.serve_static_files = true
-  config.assets.js_compressor = :uglifier
 
-  config.assets.digest = true
 
 end

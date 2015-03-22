@@ -19,7 +19,7 @@
     table.table.ui.inverted.yellow.large
       thead
         tr
-          th
+          th style="width: 250px"
             | Nome
           th
       tbody
@@ -28,13 +28,12 @@
             td.group-name
               = group.name
             td
-              .ui.attached.buttons.right.floated.large
-                = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'
-                '
-                .ui.button.blue.duplicate-group title='Duplicar grupo' data-id="#{group.id}"
-                  i.icon.copy
-                '
-                = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
+              = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'
+              '
+              .ui.button.blue.duplicate-group title='Duplicar grupo' data-id="#{group.id}"
+                i.icon.copy
+              '
+              = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
 
     br
 

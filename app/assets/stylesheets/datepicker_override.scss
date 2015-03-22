@@ -1,0 +1,36 @@
+table.ui-datepicker-calendar tbody tr td a{
+  color: #fff;
+}
+
+table.ui-datepicker-calendar tbody tr td a:hover{
+  color: #45b1ff;
+  background: #fff;
+}
+
+.ui-datepicker {
+  position: fixed;
+  top: 75.609375px;
+  left: 203.625px;
+  z-index: 1001;
+  display: none;
+  background: #45B1FF;
+  color: #fff;
+  padding: 25px;
+}
+
+.ui-datepicker-week-end {
+  font-weight: bold;
+}
+
+.ui-datepicker-next span, .ui-datepicker-prev span {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+select.ui-datepicker-month, select.ui-datepicker-year {
+  color: #333;
+  background: #fff;
+  border: none;
+}
+

@@ -10,11 +10,19 @@ function set_message(status, msg) {
         msg + "</div>");
 }
 
-function init_chosen(){
+function init_chosen() {
     $('.chosen-select').chosen({
         allow_single_deselect: true,
         no_results_text: 'No results matched',
         width: '400px'
+    });
+}
+
+function init_datepicker() {
+    $(".datepicker").each(function (i, o) {
+        var params = $(this).attr('data-options');
+        params = jQuery.parseJSON(params);
+        $(this).datepicker(params);
     });
 }
 
@@ -34,6 +42,8 @@ $(document).ready(function () {
         $(this).closest('.message').fadeOut();
     });
 
+
+    init_datepicker();
     init_chosen();
 
 });

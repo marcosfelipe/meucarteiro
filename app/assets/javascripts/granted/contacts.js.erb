@@ -53,6 +53,7 @@ $(document).ready(function(){
         }).success(function(data){
             $('#modal-edit-contact').find('#form').hide().html(data).fadeIn(300);
             init_chosen();
+            init_datepicker();
         });
     });
 
@@ -68,6 +69,7 @@ $(document).ready(function(){
         }).success(function(data){
             $('#modal-new-contact').find('#form').hide().html(data).fadeIn(300);
             init_chosen();
+            init_datepicker();
         });
     })
 

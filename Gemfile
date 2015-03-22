@@ -35,6 +35,8 @@ gem 'resque-scheduler'
 gem 'redis'
 gem 'pusher'
 
+gem 'jquery-ui-rails'
+
 
 gem 'stripe'
 
