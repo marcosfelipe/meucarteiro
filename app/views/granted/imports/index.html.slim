@@ -28,7 +28,7 @@ h1.ui.header
 
   br
 
-  = paginate @groups
+  = paginate @imports
 
   .ui.pull.right
     = link_to '/adlf', class: 'ui button green large' do
@@ -38,34 +38,10 @@ h1.ui.header
       i.icon.add
       |  New Group
 
-  #modal-duplicate-group.ui.modal
-    i.close.icon
-    .header
-      | Duplicar Grupo
-    .content
-      .ui.header
-        | Todos os contatos serão copiados!
-      p
-        | Deseja realmente duplicar o grupo
-        '
-        b
-          span#duplicate-group-name
-        | ?
-      = form_for 'group', url: group_duplicate_path do |f|
-        .ui.form
-          .field
-            = f.text_field 'name', placeholder: 'Nome do novo grupo'
-          = f.hidden_field 'id', id: 'id'
-          = f.submit 'Ok! Duplicar', class: 'ui button green'
-
-    .actions
-      .ui.button.red
-        i.close.icon
-        | Cancelar
 
 - else
   .ui.teal.label.huge
-    | Nenhum grupo encontrado!
+    | Nenhuma importação encontrada!
     .detail
-      = link_to 'Clique aqui criar um grupo.', new_group_path
+      = link_to 'Clique aqui criar um arquivo de contatos.', new_import_path
 

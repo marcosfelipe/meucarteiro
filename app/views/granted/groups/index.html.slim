@@ -1,77 +1,74 @@
-h1.ui.header
-  | Listing groups
+= render 'menu'
 
-.ui.form
-  = form_tag groups_path, method: :get do
-    .fields
-      .six.wide.field
-        = text_field_tag :search, params[:search], placeholder: "Search..."
-      .two.wide.field
-        button.ui.button.green type="submit"
-          i.icon.search
+.page.container
+
+  h1.ui.header
+    | Listing groups
+
+  .ui.form
+    = form_tag groups_path, method: :get do
+      .fields
+        .six.wide.field
+          = text_field_tag :search, params[:search], placeholder: "Search..."
+        .two.wide.field
+          button.ui.button.green type="submit"
+            i.icon.search
 
 
-- if @groups.size > 0
-  table.table.ui.inverted.yellow.large
-    thead
-      tr
-        th
-          | Nome
-        th
-    tbody
-      - @groups.each do | group |
+  - if @groups.size > 0
+    table.table.ui.inverted.yellow.large
+      thead
         tr
-          td.group-name
-            = group.name
-          td
-            .ui.attached.buttons.right.floated.large
-              = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'
-              '
-              .ui.button.blue.duplicate-group title='Duplicar grupo' data-id="#{group.id}"
-                i.icon.copy
-              '
-              = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
+          th
+            | Nome
+          th
+      tbody
+        - @groups.each do | group |
+          tr
+            td.group-name
+              = group.name
+            td
+              .ui.attached.buttons.right.floated.large
+                = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'
+                '
+                .ui.button.blue.duplicate-group title='Duplicar grupo' data-id="#{group.id}"
+                  i.icon.copy
+                '
+                = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
 
-  br
+    br
 
-  = paginate @groups
+    = paginate @groups
 
-  .ui.pull.right
-    = link_to '/adlf', class: 'ui button green large' do
-      i.icon.linkify
-      | Mesclar Grupos
-    = link_to new_group_path, class: 'ui button green large' do
-      i.icon.add
-      |  New Group
 
-  #modal-duplicate-group.ui.modal
-    i.close.icon
-    .header
-      | Duplicar Grupo
-    .content
-      .ui.header
-        | Todos os contatos serão copiados!
-      p
-        | Deseja realmente duplicar o grupo
-        '
-        b
-          span#duplicate-group-name
-        | ?
-      = form_for 'group', url: group_duplicate_path do |f|
-        .ui.form
-          .field
-            = f.text_field 'name', placeholder: 'Nome do novo grupo'
-          = f.hidden_field 'id', id: 'id'
-          = f.submit 'Ok! Duplicar', class: 'ui button green'
+    #modal-duplicate-group.ui.modal
+      i.close.icon
+      .header
+        | Duplicar Grupo
+      .content
+        .ui.header
+          | Todos os contatos serão copiados!
+        p
+          | Deseja realmente duplicar o grupo
+          '
+          b
+            span#duplicate-group-name
+          | ?
+        = form_for 'group', url: group_duplicate_path do |f|
+          .ui.form
+            .field
+              = f.text_field 'name', placeholder: 'Nome do novo grupo'
+            = f.hidden_field 'id', id: 'id'
+            = f.submit 'Ok! Duplicar', class: 'ui button green'
 
-    .actions
-      .ui.button.red
-        i.close.icon
-        | Cancelar
+      .actions
+        .ui.button.red
+          i.close.icon
+          | Cancelar
 
-- else
-  .ui.teal.label.huge
-    | Nenhum grupo encontrado!
-    .detail
-      = link_to 'Clique aqui criar um grupo.', new_group_path
+  - else
+    .ui.teal.label.huge
+      | Nenhum grupo encontrado!
+      .detail
+        = link_to 'Clique aqui criar um grupo.', new_group_path
 

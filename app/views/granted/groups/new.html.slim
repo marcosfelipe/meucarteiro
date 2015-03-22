@@ -1,25 +1,25 @@
-.ui.two.column.centered.grid
+= render 'menu'
 
-  .column
+.page.container
 
-    h1.ui.header Novo Grupo de Contatos
+  h1.ui.header Novo Grupo de Contatos
 
-    - if @group_contacts.errors.any?
-      .ui.message.red.segment.inverted
-        i.close.icon
-        h4= "#{pluralize(@group_contacts.errors.count,"error")} prohibited this zone from being saved:"
-        ul
-          - @group_contacts.errors.full_messages.each do |msg|
-            li= msg
+  - if @group_contacts.errors.any?
+    .ui.message.red.segment.inverted
+      i.close.icon
+      h4= "#{pluralize(@group_contacts.errors.count,"error")} prohibited this zone from being saved:"
+      ul
+        - @group_contacts.errors.full_messages.each do |msg|
+          li= msg
 
-    = form_for @group_contacts, url: '/groups', multipart: true do |f|
-      .ui.form.large
-        .field
-          = f.text_field :name, placeholder: "Nome do Grupo", autofocus: true
-        .field
-          = f.label :file, "Selecione um arquivo com seus contatos"
-          = f.file_field :file
-        .field
-          = f.button :class => "ui button green large" do
-            i.icon.checkmark
-            | Criar grupo
+  = form_for @group_contacts, url: '/groups', multipart: true do |f|
+    .ui.form.large
+      .field
+        = f.text_field :name, placeholder: "Nome do Grupo", autofocus: true
+      .field
+        = f.label :file, "Selecione um arquivo com seus contatos"
+        = f.file_field :file
+      .field
+        = f.button :class => "ui button green large" do
+          i.icon.checkmark
+          | Criar grupo

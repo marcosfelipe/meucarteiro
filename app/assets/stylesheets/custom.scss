@@ -26,3 +26,20 @@ footer#footer {
 .pull.right {
   float: right;
 }
+
+.page.sub.menu {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.page.container {
+  display: inline-block;
+  padding-left: 40px;
+  padding-right: 40px;
+  vertical-align: top;
+}
+
+.field.date.selects > select{
+  display: inline-block;
+  width: auto;
+}

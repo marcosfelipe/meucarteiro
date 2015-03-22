@@ -1,73 +1,84 @@
-h1.ui.header
-  | Listing contacts
+= render 'menu'
 
-.ui.form
-  = form_tag current_page?(contacts_path) ? contacts_path : group_contacts_path, method: :get do
-    .fields
-      .six.wide.field
-        = text_field_tag :search, params[:search], placeholder: "Search..."
-      .two.wide.field
-        button.ui.button.green type="submit"
-          i.icon.search
+.page.container
 
-- if @contacts.size > 0
+  h1.ui.header
+    | Listing contacts
 
-  table.table.ui.inverted.yellow.compact
-    thead
-      tr
-        th
-          | Name
-        th
-          | Phone
-        th
-          | E-Mail
-        th
-          | Group
-        th
-    tbody
-      - @contacts.each do | contact |
+  .ui.form
+    = form_tag current_page?(contacts_path) ? contacts_path : group_contacts_path, method: :get do
+      .fields
+        .six.wide.field
+          = text_field_tag :search, params[:search], placeholder: "Search..."
+        .two.wide.field
+          button.ui.button.green type="submit"
+            i.icon.search
+
+  - if @contacts.size > 0
+
+    table.table.ui.inverted.yellow.compact
+      thead
         tr
-          td
-            = contact.name
-          td
-            = contact.phone
-          td
-            = contact.email
-          td
-            - contact.groups.map do |g|
-              a.ui.teal.tag.label.mini
-                = g.name
-          td
-            .buttons.ui.pull.right
-              .edit-contact.button.ui.blue data-id="#{contact.id}"
-                i.icon.edit
-              = link_to contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
-                i.icon.delete
+          th
+            | Name
+          th
+            | Phone
+          th
+            | E-Mail
+          th
+            | Group
+          th
+      tbody
+        - @contacts.each do | contact |
+          tr
+            td
+              = contact.name
+            td
+              = contact.phone
+            td
+              = contact.email
+            td
+              - contact.groups.map do |g|
+                a.ui.teal.tag.label.mini
+                  = g.name
+            td
+              .buttons.ui.pull.right
+                .edit-contact.button.ui.blue data-id="#{contact.id}"
+                  i.icon.edit
+                = link_to contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
+                  i.icon.delete
 
-  #modal-edit-contact.ui.modal
-    i.close.icon
-    .header
-      | Editar Contato
-    .content
-      .ui.header
-      #form
-    .actions
-      .ui.button.red
-        i.close.icon
-        | Cancelar
+    #modal-edit-contact.ui.modal
+      i.close.icon
+      .header
+        | Editar Contato
+      .content
+        .ui.header
+        #form
+      .actions
+        .ui.button.blue
+          i.close.icon
+          | Cancelar
 
-  br
+    #modal-new-contact.ui.modal
+      i.close.icon
+      .header
+        | Novo Contato
+      .content
+        .ui.header
+        #form
+      .actions
+        .ui.button.blue
+          i.close.icon
+          | Cancelar
 
-  = paginate @contacts
+    br
 
-  .ui.pull.right
-    = link_to new_contact_path, class: 'ui button green large' do
-      i.icon.add
-      |  New Contact
+    = paginate @contacts
 
--else
+  -else
 
-  .ui.teal.label.huge
-    | Você não tem nenhum contato!
-    .detail
-      = link_to 'Nenhum contato encontrado!', new_contact_path
+    .ui.teal.label.huge
+      | Você não tem nenhum contato!
+      .detail
+        = link_to 'Nenhum contato encontrado!', new_contact_path

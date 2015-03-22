@@ -1,0 +1,7 @@
+.ui.vertical.menu.inverted.yellow.page.sub.menu
+  = link_to groups_path, class: 'item '+('active' if current_page?(groups_path)).to_s do
+    |  List
+    .ui.teal.label
+      = @groups_count
+  = link_to new_group_path, class: 'item '+('active' if current_page?(new_group_path)).to_s do
+    |  New Group

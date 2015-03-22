@@ -7,6 +7,7 @@ gem 'rails', '4.2.0'
 group :development do
   gem 'sqlite3'
   gem 'rails-dev-tweaks'
+  gem 'thin'
 end
 
 group :production do

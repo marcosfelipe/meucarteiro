@@ -1,5 +1,5 @@
 .ui.form
-  = form_for @contact, url: contact_path do |f|
+  = form_for @contact do |f|
     .three.fields
       .field
         label Name
@@ -11,7 +11,7 @@
         label E-Mail
         = f.text_field :email, title: "E-Mail", placeholder: "E-Mail"
     .two.fields
-      .field
+      .field.date.selects
         label Data de Nascimento
         = f.date_select :birth, title: "Birth", placeholder: "Birth"
       .field
@@ -19,6 +19,7 @@
         = f.text_field :city, title: "City", placeholder: "City"
     .field
       label Grupos
-      = f.select :group_ids, current_user.groups.all.collect{|g| [g.name, g.id]}, {}, { prompt: 'Selecione os grupos', multiple:true, class: 'chosen-select', include_blank: true}
+      = f.select :group_ids, current_user.groups.all.collect{|g| [g.name, g.id]}, {},
+        { prompt: 'Selecione os grupos', multiple:true, class: 'chosen-select', include_blank: true}
     .field
       = f.submit "Ok", class: "ui button green"

@@ -1,5 +1,7 @@
 class Granted::GroupsController < GrantedController
 
+  before_filter :groups_count
+
   def index
     @groups = current_user.groups.search(params[:search]).order(:created_at).page(params[:page])
   end
@@ -35,7 +37,13 @@ class Granted::GroupsController < GrantedController
   end
 
 
+
+
   private
+
+  def groups_count
+    @groups_count = current_user.groups.count
+  end
 
   def group_duplicate_params
     params.require(:group).permit(:id, :name)
