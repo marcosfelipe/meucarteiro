@@ -7,27 +7,43 @@ class Granted::GroupsController < GrantedController
   end
 
   def new
-    @group_contacts = GroupImportContacts.new
+    @group = current_user.groups.new
+    @groups = current_user.groups.all
   end
+
+  # def create
+  #
+  #   @group_contacts = GroupImportContacts.new(group_import_contacts_params)
+  #
+  #   if @group_contacts.valid?
+  #
+  #     group = current_user.groups.create! name: group_import_contacts_params[:name]
+  #
+  #     #coloca na queue a importação de contatos
+  #     CsvImportJob.perform_later(group, group_import_contacts_params[:file].path)
+  #
+  #     redirect_to groups_path, notice: 'Seu grupo de contatos estará disponível em instantes!'
+  #   else
+  #     render action: :new
+  #   end
+  #
+  #
+  # end
 
   def create
 
-    @group_contacts = GroupImportContacts.new(group_import_contacts_params)
+    @group = current_user.groups.new group_params.except(:groups)
+    @groups = current_user.groups.all
 
-    if @group_contacts.valid?
-
-      group = current_user.groups.create! name: group_import_contacts_params[:name]
-
-      #coloca na queue a importação de contatos
-      CsvImportJob.perform_later(group, group_import_contacts_params[:file].path)
-
-      redirect_to groups_path, notice: 'Seu grupo de contatos estará disponível em instantes!'
+    if @group.save
+      MergeGroupsJob.perform_later @group, group_params[:groups]
+      redirect_to groups_path, notice: 'Grupo criado! Os contatos estarão disponiveis em breve!'
     else
       render action: :new
     end
 
-
   end
+
 
   def duplicate
     group = current_user.groups.find group_duplicate_params[:id]
@@ -35,8 +51,6 @@ class Granted::GroupsController < GrantedController
     DuplicateGroupContactsJob.perform_later new_group, group
     redirect_to groups_path, notice: 'Seu grupo de contatos estará disponível em instantes!'
   end
-
-
 
 
   private
@@ -49,8 +63,8 @@ class Granted::GroupsController < GrantedController
     params.require(:group).permit(:id, :name)
   end
 
-  def group_import_contacts_params
-    params.require(:group_import_contacts).permit(:name, :file)
+  def group_params
+    params.require(:group).permit(:name, {:groups => []})
   end
 
 

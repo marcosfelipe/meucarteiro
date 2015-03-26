@@ -1,7 +1,7 @@
-.ui.vertical.menu.inverted.yellow.page.sub.menu
+.ui.vertical.menu.inverted.yellow.page.sub.menu.secundary.pointing
   = link_to groups_path, class: 'item '+('active' if current_page?(groups_path)).to_s do
-    |  List
+    |  Meus Grupos
     .ui.teal.label
       = @groups_count
   = link_to new_group_path, class: 'item '+('active' if current_page?(new_group_path)).to_s do
-    |  New Group
+    |  Criar Grupo

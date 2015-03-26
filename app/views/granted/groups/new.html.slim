@@ -4,21 +4,16 @@
 
   h1.ui.header Novo Grupo de Contatos
 
-  - if @group_contacts.errors.any?
-    .ui.message.red.segment.inverted
-      i.close.icon
-      h4= "#{pluralize(@group_contacts.errors.count,"error")} prohibited this zone from being saved:"
-      ul
-        - @group_contacts.errors.full_messages.each do |msg|
-          li= msg
+  = render 'application/model_errors', model: @group
 
-  = form_for @group_contacts, url: '/groups', multipart: true do |f|
+  = form_for @group do |f|
     .ui.form.large
       .field
         = f.text_field :name, placeholder: "Nome do Grupo", autofocus: true
       .field
-        = f.label :file, "Selecione um arquivo com seus contatos"
-        = f.file_field :file
+        label Deseja Mesclar grupos?
+        = select_tag "group[groups][]", options_from_collection_for_select(@groups, :id, :name),
+                { multiple:true, class: 'chosen-select', include_blank: true}
       .field
         = f.button :class => "ui button green large" do
           i.icon.checkmark
