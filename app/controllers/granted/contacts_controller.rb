@@ -6,8 +6,8 @@ class Granted::ContactsController < GrantedController
 
   def index
     if params[:group_id]
-      @group = Group.find params[:group_id]
-      @contacts = current_user.groups.find(@group).contacts.all
+      @group = current_user.groups.find params[:group_id]
+      @contacts = @group.contacts.all
         .search(params[:search]).order('contacts.created_at desc')
         .activated
         .page(params[:page]).per(15)

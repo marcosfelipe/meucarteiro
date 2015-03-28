@@ -15,7 +15,6 @@ $(document).ready(function(){
                 e.preventDefault();
             });
             modal.modal('show');
-            init_chosen();
         })
 
     });
@@ -35,7 +34,6 @@ $(document).ready(function(){
                 e.preventDefault();
             });
             modal.modal('show');
-            init_chosen();
         })
 
     });
@@ -46,14 +44,13 @@ $(document).ready(function(){
         var url = form.attr('action');
         var data = form.serialize();
         var method = form.find('input[name=_method]').val();
+        form.addClass('loading ui form');
         $.ajax({
             url: url,
             data: data,
             type: method
         }).success(function(data){
             $('#modal-edit-contact').find('#form').hide().html(data).fadeIn(300);
-            init_chosen();
-            init_datepicker();
         });
     });
 
@@ -62,14 +59,13 @@ $(document).ready(function(){
         var url = form.attr('action');
         var data = form.serialize();
         var method = form.find('input[name=_method]').val() || form.attr('method');
+        form.addClass('loading ui form');
         $.ajax({
             url: url,
             data: data,
             type: method
         }).success(function(data){
             $('#modal-new-contact').find('#form').hide().html(data).fadeIn(300);
-            init_chosen();
-            init_datepicker();
         });
     })
 

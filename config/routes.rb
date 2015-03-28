@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  root 'welcome#beta'
+
+  get 'beta' => 'welcome#beta'
 
   get 'home' => 'welcome#index'
 
@@ -9,13 +11,15 @@ Rails.application.routes.draw do
   #escopo para pasta de usuário autenticado
   scope module: 'granted' do
 
-    resources :imports
     resources :contacts, except: [:show]
+
+    get 'import/contacts' => 'imports#new', path_for_action: 'import_contacts'
+    post 'import/contacts' => 'imports#create', path_for_action: 'import_contacts'
 
     post 'pusher/auth'
 
     resources :groups do
-      resources :contacts, only:[:create, :index, :new]
+      resources :contacts, only: [:create, :index, :new]
     end
 
     #duplicar grupo

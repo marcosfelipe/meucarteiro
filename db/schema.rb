@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318224329) do
+ActiveRecord::Schema.define(version: 20150328010813) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -50,14 +50,14 @@ ActiveRecord::Schema.define(version: 20150318224329) do
   add_index "import_infos", ["import_id"], name: "index_import_infos_on_import_id"
 
   create_table "imports", force: :cascade do |t|
-    t.integer  "contacts_count", default: 0
-    t.integer  "progress",       default: 0
-    t.integer  "status",         default: 0
+    t.integer  "contacts_count",           default: 0
+    t.integer  "progress",                 default: 0
+    t.integer  "status",                   default: 0
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "name"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "file"
+    t.string   "separator",      limit: 1
   end
 
   add_index "imports", ["user_id"], name: "index_imports_on_user_id"

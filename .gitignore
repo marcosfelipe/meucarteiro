@@ -16,3 +16,6 @@
 /log/*.log
 /tmp
 .idea/
+
+/public/assets
+/public/uploads

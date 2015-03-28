@@ -34,9 +34,7 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'redis'
 gem 'pusher'
-
 gem 'jquery-ui-rails'
-
 
 gem 'stripe'
 
@@ -50,6 +48,9 @@ gem 'kaminari'
 
 #chosen para selects multiplos
 gem 'chosen-rails'
+
+#para importação de arquivo
+gem 'carrierwave'
 
 
 # Use jquery as the JavaScript library

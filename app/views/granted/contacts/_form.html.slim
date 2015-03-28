@@ -10,7 +10,7 @@
       .field
         label E-Mail
         = f.text_field :email, title: "E-Mail", placeholder: "E-Mail"
-    .two.fields
+    .four.fields
       .field.date.selects
         label Data de Nascimento
         = f.text_field :birth, { :title => "Birth", :placeholder =>  "Birth", :class => 'datepicker', :id => Random.rand,
@@ -18,9 +18,13 @@
       .field
         label City
         = f.text_field :city, title: "City", placeholder: "City"
-    .field
-      label Grupos
-      = f.select :group_ids, current_user.groups.all.collect{|g| [g.name, g.id]}, {},
-        { prompt: 'Selecione os grupos', multiple:true, class: 'chosen-select', include_blank: true}
+      .field
+        label Grupos
+        = f.select :group_ids, current_user.groups.all.collect{|g| [g.name, g.id]}, {},
+          { prompt: 'Selecione os grupos', multiple:true, class: 'chosen-select', include_blank: true}
     .field
       = f.submit "Ok", class: "ui button green"
+
+javascript:
+  init_datepicker();
+  init_chosen();

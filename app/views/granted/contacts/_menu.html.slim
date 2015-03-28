@@ -2,8 +2,8 @@
   = link_to contacts_path, class: 'item '+('active' if current_page?(contacts_path)).to_s do
     |  Meus Contatos
     .ui.teal.label
-      = @contacts_count
+      = current_user.contacts.count
   a#new-contact.item href="#" data-path="#{new_contact_path}"
     | Criar Contato
-  = link_to new_contact_path, class: 'item '+('active' if current_page?(new_contact_path)).to_s do
+  = link_to import_contacts_path, class: 'item '+('active' if current_page?(import_contacts_path)).to_s do
     |  Importar Lista de Contatos

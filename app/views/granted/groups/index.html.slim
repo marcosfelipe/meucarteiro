@@ -2,30 +2,25 @@
 
 .page.container
 
-  h1.ui.header
-    | Listing groups
+  h1.ui.header.dividing
+    | Meus Grupos
 
   .ui.form
     = form_tag groups_path, method: :get do
-      .fields
-        .six.wide.field
-          = text_field_tag :search, params[:search], placeholder: "Search..."
-        .two.wide.field
-          button.ui.button.green type="submit"
-            i.icon.search
+      .ui.right.aligned.category.search
+        .fields
+          .six.wide.field
+            .ui.icon.input
+              = text_field_tag :search, params[:search], placeholder: "Search..."
+              i.search.icon
 
 
   - if @groups.size > 0
     table.table.ui.inverted.yellow.large
-      thead
-        tr
-          th style="width: 250px"
-            | Nome
-          th
       tbody
         - @groups.each do | group |
           tr
-            td.group-name
+            td.group-name style="width:350px"
               = group.name
             td
               = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'

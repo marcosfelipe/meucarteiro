@@ -1,0 +1,30 @@
+= render 'granted/contacts/menu'
+
+.page.container
+
+  h1.ui.header.dividing
+    | Importar Lista de Contatos
+
+  << Explicar arquivo csv >>
+
+  = render "application/messages"
+  = render "application/model_errors", model: @import
+
+  br
+
+  .ui.form
+    = form_tag import_contacts_url, method: :post, multipart: true do
+      .field
+        label Arquivo
+        = file_field_tag 'import[import][file]', title: "Arquivo", placeholder: ""
+      .field style="width: 200px"
+        label Separador
+        = select_tag 'import[import][separator]',
+          options_for_select([["Vírgula (,)", ","],["Ponto e vírgula (;)",";"]]),
+          title: "Arquivo", placeholder: ""
+      .field
+        label Grupos
+        = select_tag 'import[group][ids]', options_from_collection_for_select(current_user.groups.all.collect, :id, :name),
+            { multiple:true, class: 'chosen-select' }
+      .field
+        = submit_tag "Ok", class: "ui button green"

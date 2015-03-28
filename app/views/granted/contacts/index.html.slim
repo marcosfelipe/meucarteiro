@@ -3,16 +3,19 @@
 .page.container
 
   h1.ui.header.dividing
-    | Meus Contatos
+    - if params[:group_id]
+      | Meus Contatos do Grupo #{@group.name}
+    - else
+      | Meus Contatos
 
   .ui.form
     = form_tag current_page?(contacts_path) ? contacts_path : group_contacts_path, method: :get do
-      .fields
-        .six.wide.field
-          = text_field_tag :search, params[:search], placeholder: "Search..."
-        .two.wide.field
-          button.ui.button.green type="submit"
-            i.icon.search
+      .ui.right.aligned.category.search
+        .fields
+          .six.wide.field
+            .ui.icon.input
+              = text_field_tag :search, params[:search], placeholder: "Search..."
+              i.search.icon
 
   - if @contacts.size > 0
 
@@ -38,8 +41,8 @@
             td
               = contact.email
             td
-              - contact.groups.map do |g|
-                a.ui.teal.tag.label.mini
+              - contact.groups.each do |g|
+                = link_to group_contacts_path(g), class: 'ui label tag mini teal', title: g.name do
                   = g.name
             td
               .edit-contact.button.ui.blue data-id="#{contact.id}"
