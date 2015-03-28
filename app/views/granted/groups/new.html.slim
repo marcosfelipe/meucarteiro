@@ -2,7 +2,7 @@
 
 .page.container
 
-  h1.ui.header Novo Grupo de Contatos
+  h1.ui.header.dividing Novo Grupo de Contatos
 
   = render 'application/model_errors', model: @group
 
@@ -11,7 +11,7 @@
       .field
         = f.text_field :name, placeholder: "Nome do Grupo", autofocus: true
       .field
-        label Deseja Mesclar grupos?
+        label Deseja mesclar contatos dos grupos?
         = select_tag "group[groups][]", options_from_collection_for_select(@groups, :id, :name),
                 { multiple:true, class: 'chosen-select', include_blank: true}
       .field

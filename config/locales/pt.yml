@@ -19,6 +19,29 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+## usado para default como botões submit, search, view, tables e etc.
+
 pt:
-  hello: "Olá Mundooooooooooooo!"
+
+  contacts: Contatos
+  groups: Grupos
+
+  navigation:
+    dashboard: Painel de Controle
+    sign_out: Sair
+
+  table:
+    action:
+      view: Visualizar
+      duplicate: Duplicar
+      delete: Excluir
+  form:
+    action:
+      submit: Aplicar!
+      clear: Limpar
+      cancel: Cancelar
+
+
+
+
 

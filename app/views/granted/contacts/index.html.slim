@@ -1,3 +1,5 @@
+- title = 'asfasf'
+
 = render 'menu'
 
 .page.container
@@ -45,7 +47,7 @@
                 = link_to group_contacts_path(g), class: 'ui label tag mini teal', title: g.name do
                   = g.name
             td
-              .edit-contact.button.ui.blue data-id="#{contact.id}"
+              .edit-contact.button.ui.blue data-id="#{contact.id}" data-path="#{edit_contact_path(':id')}"
                 i.icon.edit
               = link_to contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue' do
                 i.icon.delete

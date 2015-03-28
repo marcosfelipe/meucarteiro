@@ -52,6 +52,8 @@ gem 'chosen-rails'
 #para importação de arquivo
 gem 'carrierwave'
 
+gem 'route_translator'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

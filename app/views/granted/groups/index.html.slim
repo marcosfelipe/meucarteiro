@@ -3,7 +3,7 @@
 .page.container
 
   h1.ui.header.dividing
-    | Meus Grupos
+    | #{t '.title' }
 
   .ui.form
     = form_tag groups_path, method: :get do
@@ -11,7 +11,7 @@
         .fields
           .six.wide.field
             .ui.icon.input
-              = text_field_tag :search, params[:search], placeholder: "Search..."
+              = text_field_tag :search, params[:search], placeholder: t('.search.form.input.ph')
               i.search.icon
 
 
@@ -23,12 +23,13 @@
             td.group-name style="width:350px"
               = group.name
             td
-              = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title:'Visualizar contatos'
+              = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title: t('.table.action.view')
               '
-              .ui.button.blue.duplicate-group title='Duplicar grupo' data-id="#{group.id}"
+              .ui.button.blue.duplicate-group title=t('table.action.duplicate') data-id="#{group.id}"
                 i.icon.copy
               '
-              = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button blue'
+              = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete,
+                data: { confirm: 'Are you sure?' }, class: 'ui button blue', title: t('table.action.delete')
 
     br
 
@@ -38,31 +39,25 @@
     #modal-duplicate-group.ui.modal
       i.close.icon
       .header
-        | Duplicar Grupo
+        = t('.modal.duplicate.header')
       .content
-        .ui.header
-          | Todos os contatos serão copiados!
-        p
-          | Deseja realmente duplicar o grupo
-          '
-          b
-            span#duplicate-group-name
-          | ?
+        = t('.modal.duplicate.explain_html')
         = form_for 'group', url: group_duplicate_path do |f|
           .ui.form
             .field
-              = f.text_field 'name', placeholder: 'Nome do novo grupo'
+              = f.text_field 'name', placeholder: t('.modal.duplicate.form.name')
             = f.hidden_field 'id', id: 'id'
-            = f.submit 'Ok! Duplicar', class: 'ui button green'
+            = f.submit t('form.action.submit'), class: 'ui button green'
 
       .actions
         .ui.button.red
           i.close.icon
-          | Cancelar
+          = t('form.action.cancel')
 
   - else
+    br
     .ui.teal.label.huge
-      | Nenhum grupo encontrado!
+      = t('.search.result.nothing')
       .detail
-        = link_to 'Clique aqui criar um grupo.', new_group_path
+        = link_to t('.create_group'), new_group_path
 

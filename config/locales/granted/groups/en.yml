@@ -1,0 +1,26 @@
+en:
+  granted:
+    groups:
+      index:
+        title: My Groups
+        search:
+          form:
+            input:
+              ph: Search...
+          result:
+            nothing: No groups found!
+        table:
+          action:
+            view: View contacts
+        modal:
+          duplicate:
+            header: Duplicate Group
+            explain_html: <div class="ui header">All contacts will be part of the group!</div><p>Do you really want to duplicate the group <b><span id="duplicate-group-name"></span></b>?</p>
+            form:
+              name: Group name
+        create_group: Click here to create a group.
+      menu:
+        my_groups: My Groups
+        create: Create Group
+
+

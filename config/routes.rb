@@ -1,31 +1,36 @@
 Rails.application.routes.draw do
 
-  root 'welcome#beta'
 
-  get 'beta' => 'welcome#beta'
+  localized do
 
-  get 'home' => 'welcome#index'
+    root 'welcome#beta'
 
-  devise_for :users, path: "auth"
+    get 'beta' => 'welcome#beta'
 
-  #escopo para pasta de usuário autenticado
-  scope module: 'granted' do
+    get 'home' => 'welcome#index'
 
-    resources :contacts, except: [:show]
+    devise_for :users, path: "auth"
 
-    get 'import/contacts' => 'imports#new', path_for_action: 'import_contacts'
-    post 'import/contacts' => 'imports#create', path_for_action: 'import_contacts'
+    #escopo para pasta de usuário autenticado
+    scope module: 'granted' do
 
-    post 'pusher/auth'
+      resources :contacts, except: [:show]
 
-    resources :groups do
-      resources :contacts, only: [:create, :index, :new]
+      get 'import/contacts' => 'imports#new', path_for_action: 'import_contacts'
+      post 'import/contacts' => 'imports#create', path_for_action: 'import_contacts'
+
+      post 'pusher/auth'
+
+      resources :groups do
+        resources :contacts, only: [:create, :index, :new]
+      end
+
+      #duplicar grupo
+      post 'group/duplicate', controller: :groups, action: :duplicate
+
+      get 'dashboard', controller: :dashboard, action: :index
+
     end
-
-    #duplicar grupo
-    post 'group/duplicate', controller: :groups, action: :duplicate
-
-    get 'dashboard', controller: :dashboard, action: :index
 
   end
 

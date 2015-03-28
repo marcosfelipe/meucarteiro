@@ -1,0 +1,26 @@
+pt:
+  granted:
+    groups:
+      index:
+        title: Meus Grupos
+        search:
+          form:
+            input:
+              ph: Procurar...
+          result:
+            nothing: Nenhum grupo encontrado!
+        table:
+          action:
+            view: Visualizar contatos
+        modal:
+          duplicate:
+            header: Duplicar Grupo
+            explain_html: <div class="ui header">Todos os contatos farão parte do novo grupo!</div><p>Deseja realmente duplicar o grupo <b><span id="duplicate-group-name"></span></b>?</p>
+            form:
+              name: Nome do Grupo
+        create_group: Clique aqui criar um grupo.
+      menu:
+        my_groups: Meus Grupos
+        create: Criar Grupo
+
+

@@ -1,15 +1,15 @@
 #navigation-container.ui.inverted.main.menu.yellow
   = link_to dashboard_path, class: "item #{'active' if current_page?(dashboard_path)}" do
     i.dashboard.icon
-    | Dashboard
+    = t 'navigation.dashboard'
 
   = link_to contacts_path, class: "item #{'active' if current_page?(contacts_path)}" do
     i.users.icon
-    | Contacts
+    = t 'contacts'
 
   = link_to groups_path, class: "item #{'active' if current_page?(groups_path)}" do
     i.block.layout.icon
-    | Groups
+    = t 'groups'
 
   .ui.dropdown.item.floated.right
     | #{current_user.email}
@@ -17,6 +17,6 @@
     .menu
       a.item data-method="delete" href="#{url_for controller: "devise/sessions", action: :destroy}"
         i.remove.icon
-        | Sair
+        = t 'navigation.sign_out'
 
 

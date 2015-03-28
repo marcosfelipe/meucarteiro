@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :imports
   has_many :contacts
   has_many :groups
-
+  belongs_to :language
 
 
 end

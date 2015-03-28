@@ -1,0 +1,17 @@
+pt:
+  routes:
+    groups: grupos
+    new: novo
+    edit: editar
+    show: ver
+    index: index
+    auth: autenticacao
+    sign_in: entrar
+    sign_out: sair
+    import: importar
+    contacts: contatos
+    duplicate: duplicar
+    dashboard: painel-de-controle
+    welcome: bem-vindo
+
+
