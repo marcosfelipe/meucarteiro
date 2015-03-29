@@ -23,5 +23,8 @@ module Meucarteiro
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
 
+    Koala.config.api_version = 'v2.0'
+
+
   end
 end

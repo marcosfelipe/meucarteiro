@@ -54,6 +54,9 @@ gem 'carrierwave'
 
 gem 'route_translator'
 
+gem 'omniauth-facebook' # Facebook authentication
+gem "koala", "~> 1.10.0rc" # Facebook API
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

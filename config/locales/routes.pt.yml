@@ -13,5 +13,8 @@ pt:
     duplicate: duplicar
     dashboard: painel-de-controle
     welcome: bem-vindo
+    shipments: envios
+    shipment: envio
+
 
 

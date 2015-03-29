@@ -1,0 +1,11 @@
+.ui.vertical.menu.inverted.yellow.page.sub.menu.secundary.pointing
+  = link_to '#', class: 'item '+('active' if current_page?(groups_path)).to_s do
+    | Pendentes
+    .ui.teal.label
+      | 2
+  = link_to "#", class: 'item '+('active' if current_page?(new_group_path)).to_s do
+    | Completados
+    .ui.teal.label
+      | 2
+  = link_to "#", class: 'item '+('active' if current_page?(new_group_path)).to_s do
+    | Enviar Mensagens

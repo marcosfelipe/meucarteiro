@@ -11,6 +11,10 @@
     i.block.layout.icon
     = t 'groups'
 
+  = link_to '#', class: "item ui button green #{'active' if current_page?(new_contact_path)}" do
+    i.send.icon
+    = 'Enviar'
+
   .ui.dropdown.item.floated.right
     | #{current_user.email}
     i.dropdown.icon

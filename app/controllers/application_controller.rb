@@ -5,13 +5,6 @@ class ApplicationController < ActionController::Base
 
 
 
-  before_action :set_locale
-
-  def set_locale
-    I18n.locale = current_user.language.locale
-    #I18n.locale = params[:locale] || current_user.language.locale || I18n.default_locale
-  end
-
 
   #sobrescre o redirecionamento do devise quando cria a conta
   def after_sign_in_path_for(resource)

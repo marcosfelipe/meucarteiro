@@ -1,0 +1,27 @@
+= render 'menu'
+
+.page.container
+
+  h1.ui.header.dividing Novo Envio
+
+  = render 'application/model_errors', model: @shipment
+
+  = form_for @shipment do |s|
+    .ui.form.large
+      .field
+        = s.text_field :name, placeholder: "Nome do Envio", autofocus: true
+      .field
+        = s.text_field :schedule, placeholder: "Agendar para..."
+
+      = s.fields_for :shipment_text_attributes do |t|
+        .field
+          = t.text_area :facebook, placeholder: "Texto do facebook"
+
+      .field
+        label Selecione os grupos para enviar
+        = select_tag "shipment[group][ids][]", options_from_collection_for_select(current_user.groups.all, :id, :name),
+                { multiple:true, class: 'chosen-select', include_blank: true}
+      .field
+        = s.button :class => "ui button green massive" do
+          i.checkmark.icon
+          | Enviar

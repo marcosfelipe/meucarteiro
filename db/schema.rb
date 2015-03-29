@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328175109) do
+ActiveRecord::Schema.define(version: 20150328211102) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150328175109) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "facebook"
   end
 
   create_table "group_contacts", force: :cascade do |t|
@@ -67,6 +68,41 @@ ActiveRecord::Schema.define(version: 20150328175109) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "shipment_contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "facebook"
+    t.integer  "shipment_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shipment_contacts", ["shipment_id"], name: "index_shipment_contacts_on_shipment_id"
+
+  create_table "shipment_texts", force: :cascade do |t|
+    t.string   "sms"
+    t.string   "whatsapp"
+    t.string   "facebook"
+    t.string   "email"
+    t.integer  "shipment_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shipment_texts", ["shipment_id"], name: "index_shipment_texts_on_shipment_id"
+
+  create_table "shipments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "schedule"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
+  end
+
+  add_index "shipments", ["user_id"], name: "index_shipments_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

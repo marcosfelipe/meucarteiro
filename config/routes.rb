@@ -14,13 +14,17 @@ Rails.application.routes.draw do
     #escopo para pasta de usuário autenticado
     scope module: 'granted' do
 
+      #contatos
       resources :contacts, except: [:show]
 
+      #importação
       get 'import/contacts' => 'imports#new', path_for_action: 'import_contacts'
       post 'import/contacts' => 'imports#create', path_for_action: 'import_contacts'
 
+      #para autenticação do push
       post 'pusher/auth'
 
+      #grupos com contatos
       resources :groups do
         resources :contacts, only: [:create, :index, :new]
       end
@@ -28,7 +32,14 @@ Rails.application.routes.draw do
       #duplicar grupo
       post 'group/duplicate', controller: :groups, action: :duplicate
 
-      get 'dashboard', controller: :dashboard, action: :index
+      #dash
+      get 'dashboard' => "dashboard#index"
+
+      #envios
+      get 'shipments/new' => "shipments#new", path_for_action: 'new_shipment'
+      post 'shipments' => "shipments#create", path_for_action: 'shipments'
+      get 'shipments' => "shipments#index"
+
 
     end
 
