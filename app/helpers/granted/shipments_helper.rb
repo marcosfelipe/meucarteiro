@@ -1,0 +1,2 @@
+module Granted::ShipmentsHelper
+end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sms: MyString
+  whatsapp: MyString
+  facebook: MyString
+  email: MyString
+  shipment_id: 
+
+two:
+  sms: MyString
+  whatsapp: MyString
+  facebook: MyString
+  email: MyString
+  shipment_id: 
