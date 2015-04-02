@@ -1,3 +1,5 @@
+require 'stripe'
+
 class CsvImportJob < ActiveJob::Base
 
   require 'csv'

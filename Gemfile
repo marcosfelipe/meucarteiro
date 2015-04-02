@@ -36,6 +36,8 @@ gem 'redis'
 gem 'pusher'
 gem 'jquery-ui-rails'
 
+gem 'stripe'
+
 gem 'sass', '~> 3.4'
 gem 'autoprefixer-rails'
 

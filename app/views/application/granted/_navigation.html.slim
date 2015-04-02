@@ -11,7 +11,7 @@
     i.block.layout.icon
     = t 'groups'
 
-  = link_to '#', class: "item ui button green #{'active' if current_page?(new_contact_path)}" do
+  = link_to shipments_new_path, class: "item ui button green #{'active' if current_page?(new_contact_path)}" do
     i.send.icon
     = 'Enviar'
 

@@ -15,7 +15,11 @@
 
       = s.fields_for :shipment_text_attributes do |t|
         .field
-          = t.text_area :facebook, placeholder: "Texto do facebook"
+          = t.text_area :whatsapp, placeholder: "Texto do Whatsapp"
+        .field
+          = t.text_area :sms, placeholder: "Texto do SMS"
+        .field
+          = t.text_area :email, placeholder: "Texto do E-Mail"
 
       .field
         label Selecione os grupos para enviar

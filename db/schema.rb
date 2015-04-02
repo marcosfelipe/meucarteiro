@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328211102) do
+ActiveRecord::Schema.define(version: 20150402025655) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20150328211102) do
   create_table "shipment_texts", force: :cascade do |t|
     t.string   "sms"
     t.string   "whatsapp"
-    t.string   "facebook"
     t.string   "email"
     t.integer  "shipment_id"
     t.datetime "created_at",  null: false

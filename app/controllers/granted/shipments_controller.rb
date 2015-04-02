@@ -1,9 +1,6 @@
 class Granted::ShipmentsController < GrantedController
 
   def index
-
-
-
   end
 
 
@@ -30,7 +27,7 @@ class Granted::ShipmentsController < GrantedController
   private
 
   def shipment_params
-    params.require(:shipment).permit(:name, :schedule, {:shipment_text_attributes => [:facebook]}, {:group => {:ids => []}})
+    params.require(:shipment).permit(:name, :schedule, {:shipment_text_attributes => [:whatsapp, :email, :sms]}, {:group => {:ids => []}})
   end
 
 end
