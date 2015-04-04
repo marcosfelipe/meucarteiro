@@ -27,7 +27,10 @@ class Granted::ShipmentsController < GrantedController
   private
 
   def shipment_params
-    params.require(:shipment).permit(:name, :schedule, {:shipment_text_attributes => [:whatsapp, :email, :sms]}, {:group => {:ids => []}})
+    params.require(:shipment).permit(:name, :schedule,
+                                     {:shipment_text_attributes => [:whatsapp, :sms]},
+                                     {:shipment_email_attributes => [:from, :subject, :body]},
+                                     {:group => {:ids => []}})
   end
 
 end

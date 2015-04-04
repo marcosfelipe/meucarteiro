@@ -36,7 +36,17 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
 
+  # action_mailer
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.mandrillapp.com',
+      port:                 587,
+      domain:               'meucarteiro.com',
+      user_name:            'marcosfelipe4@outlook.com',
+      password:             '88LmPguqdDw4FRRsXNbYCQ',
+      authentication:       'plain',
+      enable_starttls_auto: true  }
 
 
 

@@ -18,15 +18,15 @@ class WhatsappService
     @client['api_sendToNumbers'].post({
       "APIKey" => @token,
       "messageType" => "single",
-        "services" => {
-          "name" => "WhatsApp",
-          "NoSendTime" => {
-            "BaseHour" => "00=>00",
-            "For" => 6
-          },
-          "selectedNumbers" => [number],
-          "messages" => [{"type" => "Text","content" => message}]
-        }
+      "services" => {
+        "name" => "WhatsApp",
+        "NoSendTime" => {
+          "BaseHour" => "00=>00",
+          "For" => 6
+        },
+        "selectedNumbers" => [number],
+        "messages" => {"type" => "Text","content" => message}
+      }
     })
 
   end

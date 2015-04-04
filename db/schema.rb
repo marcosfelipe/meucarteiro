@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402025655) do
+ActiveRecord::Schema.define(version: 20150404022626) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -81,13 +81,23 @@ ActiveRecord::Schema.define(version: 20150402025655) do
 
   add_index "shipment_contacts", ["shipment_id"], name: "index_shipment_contacts_on_shipment_id"
 
-  create_table "shipment_texts", force: :cascade do |t|
-    t.string   "sms"
-    t.string   "whatsapp"
-    t.string   "email"
+  create_table "shipment_emails", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "body"
+    t.string   "from"
     t.integer  "shipment_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  add_index "shipment_emails", ["shipment_id"], name: "index_shipment_emails_on_shipment_id"
+
+  create_table "shipment_texts", force: :cascade do |t|
+    t.string   "whatsapp"
+    t.integer  "shipment_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "sms"
   end
 
   add_index "shipment_texts", ["shipment_id"], name: "index_shipment_texts_on_shipment_id"

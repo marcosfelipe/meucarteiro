@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     get 'home' => 'welcome#index'
 
-    devise_for :users, path: "auth"
+    devise_for :users, path: "user"
 
     #escopo para pasta de usuário autenticado
     scope module: 'granted' do
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get 'shipments/new' => "shipments#new", path_for_action: 'new_shipment'
       post 'shipments' => "shipments#create", path_for_action: 'shipments'
       get 'shipments' => "shipments#index"
+      get 'shipments/done' => "shipments#done", path_for_action: 'shipments_done'
 
 
     end

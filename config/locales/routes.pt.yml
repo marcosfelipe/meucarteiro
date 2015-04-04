@@ -8,6 +8,7 @@ pt:
     auth: autenticacao
     sign_in: entrar
     sign_out: sair
+    sign_up: criar-conta
     import: importar
     contacts: contatos
     duplicate: duplicar
@@ -15,6 +16,9 @@ pt:
     welcome: bem-vindo
     shipments: envios
     shipment: envio
+    user: usuario
+    password: senha
+
 
 
 

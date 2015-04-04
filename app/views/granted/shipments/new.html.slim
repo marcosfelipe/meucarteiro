@@ -14,12 +14,33 @@
         = s.text_field :schedule, placeholder: "Agendar para..."
 
       = s.fields_for :shipment_text_attributes do |t|
-        .field
-          = t.text_area :whatsapp, placeholder: "Texto do Whatsapp"
-        .field
-          = t.text_area :sms, placeholder: "Texto do SMS"
-        .field
-          = t.text_area :email, placeholder: "Texto do E-Mail"
+
+        #messages-tab
+          .ui.pointing.secondary.menu
+            a.item.active data-tab="whatsapp"
+              | Whatsapp
+            a.item data-tab="sms"
+              | SMS
+            a.item data-tab="email"
+              | E-Mail
+
+          .ui.basic.active.tab.segment data-tab="whatsapp"
+            .field
+              = t.text_area :whatsapp, placeholder: "Texto do Whatsapp"
+          .ui.basic.tab.segment data-tab="sms"
+            .field
+              = t.text_area :sms, placeholder: "Texto do SMS"
+          .ui.basic.tab.segment data-tab="email"
+            = s.fields_for :shipment_email_attributes do |e|
+              .field
+                = e.text_field :from, placeholder: "De: email@exemplo.com"
+              .field
+                = e.text_field :subject, placeholder: "Assunto..."
+              .field
+                = e.text_area :body, placeholder: "Corpo..."
+            .ui.purple.label.mini style="float:right"
+              | beta!
+
 
       .field
         label Selecione os grupos para enviar
