@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404022626) do
+ActiveRecord::Schema.define(version: 20150404204105) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20150404022626) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
+    t.integer  "count",      default: 0
+    t.integer  "progress",   default: 0
   end
 
   add_index "shipments", ["user_id"], name: "index_shipments_on_user_id"

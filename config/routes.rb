@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       post 'shipments' => "shipments#create", path_for_action: 'shipments'
       get 'shipments' => "shipments#index"
       get 'shipments/done' => "shipments#done", path_for_action: 'shipments_done'
+      get 'shipments/pending' => "shipments#pending", path_for_action: 'shipments_pending'
 
 
     end

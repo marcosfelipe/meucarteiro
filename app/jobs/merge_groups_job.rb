@@ -1,5 +1,5 @@
 class MergeGroupsJob < ActiveJob::Base
-  queue_as :default
+  queue_as :low
 
   #mesclar grupos para o grupo
   def perform(group, groups)

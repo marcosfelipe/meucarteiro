@@ -1,7 +1,7 @@
 #cria os contatos para a remessa
 
 class FattenShippingJob < ActiveJob::Base
-  queue_as :default
+  queue_as :low
 
   #shipment active record
   #group_ids array
@@ -38,8 +38,10 @@ class FattenShippingJob < ActiveJob::Base
 
       end if groups.size > 0
     ensure
-      #remessa com status pronto
+      # remessa com status pronto
       shipment.ready!
+      # progresso para 50% do que tem que ser feito
+      shipment.update! progress: 50
       puts "Remessa pronta para envio!"
 
       DispatchJob.perform_later shipment

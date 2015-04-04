@@ -1,5 +1,5 @@
 class DispatchJob < ActiveJob::Base
-  queue_as :default
+  queue_as :low
 
   def perform(shipment)
 
@@ -26,7 +26,8 @@ class DispatchJob < ActiveJob::Base
         #response = whatsapp.send_one contact.phone, whatsapp_text
         #puts response
 
-        ContactMailer.send_one(contact, email.from, email.subject, email.body).deliver_now
+        puts "# mandando email para #{contact.name}"
+        ContactMailer.send_one(contact, email.from, email.subject, email.body).deliver_later
 
       end
 

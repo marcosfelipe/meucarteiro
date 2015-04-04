@@ -1,5 +1,5 @@
 class DuplicateGroupContactsJob < ActiveJob::Base
-  queue_as :default
+  queue_as :low
 
 
   #group1 é o grupo que vai receber os contatos do grupo2

@@ -4,7 +4,7 @@ class CsvImportJob < ActiveJob::Base
 
   require 'csv'
 
-  queue_as :default
+  queue_as :low
 
   #import active record
   #groups_ids array

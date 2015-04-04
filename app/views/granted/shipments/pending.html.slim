@@ -1,0 +1,22 @@
+= render 'menu'
+
+.page.container
+
+  h1.ui.header.dividing
+    | Envios Pendentes
+
+
+  #pending-list.ui.list data-path="#{shipments_pending_path}"
+    - @shipments.each do |s|
+
+      .item shipment-id="#{s.id}"
+        .ui.header
+          = s.name
+        = s.schedule
+        = "#{s.count} contato(s)"
+        .ui.teal.progress.active style="width: 300px"
+          .bar style="width:#{s.progress}%"
+            .progress
+              = "#{s.progress}%"
+          .label
+            = s.status

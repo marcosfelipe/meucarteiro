@@ -18,6 +18,8 @@ pt:
     shipment: envio
     user: usuario
     password: senha
+    pending: pendente
+    done: terminado
 
 
 

@@ -1,11 +1,19 @@
 .ui.vertical.menu.page.sub.secondary.pointing
-  = link_to shipments_path, class: 'item '+('active' if current_page?(groups_path)).to_s do
+
+  = link_to shipments_path, class: 'item '+('active' if current_page?(shipments_path)).to_s do
+    | Todos os Envios
+    .ui.teal.label
+      = current_user.shipments.count
+
+  = link_to shipments_pending_path, class: 'item '+('active' if current_page?(shipments_pending_path)).to_s do
     | Pendentes
     .ui.teal.label
       = current_user.shipments.pending.count
-  = link_to shipments_done_path, class: 'item '+('active' if current_page?(new_group_path)).to_s do
+
+  = link_to shipments_done_path, class: 'item '+('active' if current_page?(shipments_done_path)).to_s do
     | Completados
     .ui.teal.label
       = current_user.shipments.done.count
-  = link_to shipments_new_path, class: 'item '+('active' if current_page?(new_group_path)).to_s do
+
+  = link_to shipments_new_path, class: 'item '+('active' if current_page?(shipments_new_path)).to_s do
     | Enviar Mensagens

@@ -3,6 +3,14 @@ class Granted::ShipmentsController < GrantedController
   def index
   end
 
+  def pending
+    @shipments = current_user.shipments.pending.all.order "created_at desc"
+  end
+
+  def done
+
+  end
+
 
   def new
     @shipment = current_user.shipments.new
@@ -14,7 +22,9 @@ class Granted::ShipmentsController < GrantedController
     if @shipment.save
 
       #cria os contatos na remessa
-      FattenShippingJob.perform_later @shipment, shipment_params[:group][:ids]
+      #todo: setar prioridade de acordo com a conta do usuario
+      FattenShippingJob.set(queue: :low
+      ).perform_later @shipment, shipment_params[:group][:ids]
 
       redirect_to shipments_path, notice: 'Envio criado'
     else
