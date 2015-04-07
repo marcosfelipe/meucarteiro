@@ -6,7 +6,7 @@
     | Envios Pendentes
 
 
-  #pending-list.ui.list data-path="#{shipments_pending_path}"
+  #pending-list.ui.list.very.relaxed.divided data-path="#{shipments_pending_path}"
     - @shipments.each do |s|
 
       .item shipment-id="#{s.id}"

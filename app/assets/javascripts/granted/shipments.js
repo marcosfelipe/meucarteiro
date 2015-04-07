@@ -4,7 +4,7 @@ $('#messages-tab .menu .item')
     })
 ;
 
-if($(document).find('#pending-list')){
+if($(document).find('#pending-list').size() > 0){
 
     var path = $('#pending-list').attr('data-path');
 

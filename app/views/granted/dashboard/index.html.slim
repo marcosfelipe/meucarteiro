@@ -1,1 +1,29 @@
-h1 Dashboard
+
+
+h1.header.ui.dividing.center.aligned.icon
+  i.ui.dashboard.icon.massive
+  .content
+    | Painel de Controle
+    .sub.header
+      | blablabla
+
+
+
+.ui.header.green.huge
+   i.send.thin.icon.inverted.circular.green
+   .content
+      | Envios Concluídos
+      .sub.header
+         = current_user.shipments.done.count
+.ui.header.blue.huge
+   i.users.thin.icon.inverted.circular.blue
+   .content
+      | Contatos
+      .sub.header
+         = current_user.contacts.count
+.ui.header.teal.huge
+   i.circle.thin.icon.inverted.circular.teal
+   .content
+      | Grupos
+      .sub.header
+         = current_user.groups.count
