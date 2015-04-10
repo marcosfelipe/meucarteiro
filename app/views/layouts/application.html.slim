@@ -18,11 +18,12 @@ html
 
     = csrf_meta_tags
   body
-    = render 'application/messages'
     = render 'application/navigation'
 
+    
     .container
       .row
+        = render 'application/messages'
         = yield
     = render 'application/footer'
 

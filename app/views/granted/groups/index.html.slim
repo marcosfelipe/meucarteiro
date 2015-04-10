@@ -28,8 +28,8 @@
               .ui.button.blue.duplicate-group title=t('table.action.duplicate') data-id="#{group.id}"
                 i.icon.copy
               '
-              = link_to content_tag('i',nil,{class: 'icon remove'}), '#', method: :delete,
-                data: { confirm: 'Are you sure?' }, class: 'ui button blue', title: t('table.action.delete')
+              .ui.button.blue.delete-group title=t('table.action.delete') data-path="#{group_path(group.id)}"
+                i.icon.delete
 
     br
 
@@ -48,11 +48,30 @@
               = f.text_field 'name', placeholder: t('.modal.duplicate.form.name')
             = f.hidden_field 'id', id: 'id'
             = f.submit t('form.action.submit'), class: 'ui button green'
-
       .actions
         .ui.button.red
           i.close.icon
           = t('form.action.cancel')
+
+    #modal-delete-group.ui.modal
+      i.close.icon
+      .header
+        | Deletar Grupo
+        '
+        span#group-name
+      .content
+        = form_for 'options', :html => {url: '#', method: "delete"} do |f|
+          .ui.form
+            .field
+              .ui.checkbox
+                = f.radio_button 'delete_contacts', "true"
+                label
+                  | Deseja deletar os contatos do grupo?
+            = f.submit t('form.action.delete'), class: 'ui button large red'
+      .actions
+        .ui.button.blue
+          i.close.icon
+          = t('form.action.close')
 
   - else
     br

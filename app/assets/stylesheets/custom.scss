@@ -13,14 +13,20 @@ footer#footer {
 
 #view-container {
   padding: 60px;
+  padding-top: 30px;
 }
 
+
 #message-container > .message {
-  margin: 0px;
+  margin: 10px;
 }
 
 #navigation-container {
   margin: 0;
+}
+
+#navigation-container > .item{
+font-size: 1.3rem
 }
 
 .pull.right {

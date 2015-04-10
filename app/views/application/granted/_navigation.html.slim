@@ -8,7 +8,7 @@
     = t 'contacts'
 
   = link_to groups_path, class: "item #{'active' if current_page?(groups_path)}" do
-    i.block.layout.icon
+    i.circle.thin.icon
     = t 'groups'
 
   = link_to shipments_new_path, class: "item ui button green #{'active' if current_page?(new_contact_path)}" do

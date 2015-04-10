@@ -30,6 +30,21 @@ class Granted::GroupsController < GrantedController
   #
   # end
 
+  def destroy
+
+    raise params.inspect
+    @group = current_user.groups.find params[:id]
+
+    if group_delete_params.has_key?(:delete_contacts)
+      @group.delete_contacts
+    end
+
+    @group.destroy
+
+    redirect_to groups_path, notice: 'Grupo deletado!'
+
+  end
+
   def create
 
     @group = current_user.groups.new group_params.except(:groups)
@@ -65,6 +80,10 @@ class Granted::GroupsController < GrantedController
 
   def group_params
     params.require(:group).permit(:name, {:groups => []})
+  end
+
+  def group_delete_params
+    params.require(:options).permit(:delete_contacts)
   end
 
 

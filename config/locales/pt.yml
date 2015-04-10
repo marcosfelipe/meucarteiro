@@ -40,6 +40,8 @@ pt:
       submit: Aplicar!
       clear: Limpar
       cancel: Cancelar
+      delete: Deletar
+      close: Fechar
 
 
 
