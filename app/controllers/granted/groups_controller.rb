@@ -32,10 +32,9 @@ class Granted::GroupsController < GrantedController
 
   def destroy
 
-    raise params.inspect
     @group = current_user.groups.find params[:id]
 
-    if group_delete_params.has_key?(:delete_contacts)
+    if group_delete_params[:delete_contacts] == '1'
       @group.delete_contacts
     end
 

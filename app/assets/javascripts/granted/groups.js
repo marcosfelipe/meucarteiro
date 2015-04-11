@@ -20,4 +20,14 @@ $(document).ready(function () {
         modal.modal('show');
     });
 
+    $('#delete-contacts:checkbox').on('change', function(){
+
+        if($(this).is(':checked')){
+            $('#delete-contacts-alert').show();
+        }else{
+            $('#delete-contacts-alert').hide();
+        }
+
+    });
+
 });

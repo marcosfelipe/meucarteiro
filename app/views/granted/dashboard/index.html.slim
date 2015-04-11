@@ -8,22 +8,25 @@ h1.header.ui.dividing.center.aligned.icon
       | blablabla
 
 
-
-.ui.header.green.huge
-   i.send.thin.icon.inverted.circular.green
-   .content
-      | Envios Concluídos
-      .sub.header
-         = current_user.shipments.done.count
-.ui.header.blue.huge
-   i.users.thin.icon.inverted.circular.blue
-   .content
-      | Contatos
-      .sub.header
-         = current_user.contacts.count
-.ui.header.teal.huge
-   i.circle.thin.icon.inverted.circular.teal
-   .content
-      | Grupos
-      .sub.header
-         = current_user.groups.count
+.ui.grid
+  .four.column style="width: 50%"
+    .ui.header.green.huge
+       i.send.thin.icon.inverted.circular.green
+       .content
+          | Envios Concluídos
+          .sub.header
+             = current_user.shipments.done.count
+    .ui.header.blue.huge
+       i.users.thin.icon.inverted.circular.blue
+       .content
+          | Contatos
+          .sub.header
+             = current_user.contacts.count
+    .ui.header.teal.huge
+       i.circle.thin.icon.inverted.circular.teal
+       .content
+          | Grupos
+          .sub.header
+             = current_user.groups.count
+  .twelve.column style="width: 50%"
+    = image_tag 'image.png', class: 'medium ui image'

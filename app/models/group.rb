@@ -25,7 +25,7 @@ class Group < ActiveRecord::Base
   end
 
   def delete_contacts
-    contacts.joins(:group_contacts).where("group_id = ?", id).destroy_all
+    contacts.where("group_id = ?", id).destroy_all
   end
 
 

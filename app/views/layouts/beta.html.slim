@@ -9,7 +9,7 @@ html
     meta name="description" content=""
     meta name="author" content=""
     title
-      | MeuCarteiro.com
+      = yield :title || 'MeuCarteiro.com'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 
     = csrf_meta_tags

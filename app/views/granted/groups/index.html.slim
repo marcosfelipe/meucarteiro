@@ -1,3 +1,5 @@
+= title 'Meus Grupos'
+
 = render 'menu'
 
 .page.container
@@ -22,7 +24,7 @@
           tr
             td.group-name style="width:350px"
               = group.name
-            td
+            td.pull.right
               = link_to content_tag('i',nil,{class: 'icon list'}), group_contacts_path(group.id), class: 'ui button blue', title: t('.table.action.view')
               '
               .ui.button.blue.duplicate-group title=t('table.action.duplicate') data-id="#{group.id}"
@@ -60,14 +62,19 @@
         '
         span#group-name
       .content
-        = form_for 'options', :html => {url: '#', method: "delete"} do |f|
+        = form_for 'options', :html => { method: "delete" } do |f|
           .ui.form
             .field
               .ui.checkbox
-                = f.radio_button 'delete_contacts', "true"
+                = f.check_box 'delete_contacts', id: 'delete-contacts'
                 label
                   | Deseja deletar os contatos do grupo?
-            = f.submit t('form.action.delete'), class: 'ui button large red'
+            .ui.label.red#delete-contacts-alert style="display:none"
+              | Cuidado! Ao deletar contatos desse grupo isso poderá afetar outros grupos que estão usando-os!
+            br
+            br
+            .field
+              = f.submit t('form.action.delete'), class: 'ui button large red'
       .actions
         .ui.button.blue
           i.close.icon
